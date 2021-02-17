@@ -9,6 +9,7 @@ function App() {
     <Router>
       <div>
         <Route path="/Maps" component ={Maps} />
+        <Route path="/" component ={()=> <h1>YAY I'M a react app!</h1>} />
       </div>
     </Router>
     
