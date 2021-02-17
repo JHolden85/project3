@@ -1,5 +1,6 @@
 import axios from "axios";
-const googleApiKey = "AIzaSyBh52MlbJJBGNRjJP5tYFwtdEAiYxLqp2s";
+import googleApiKey from "../../../.env"
+// const googleApiKey = "";
 
 export const getGoogleMap = (location, radius, type) => {
   const mapsURL =
