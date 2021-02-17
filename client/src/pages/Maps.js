@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import API from "../utils/API";
+import {getGoogleMap} from "../utils/API";
 import Container from "../components/Container";
 import MapResults from "../components/mapResults";
 const googleApiKey = "AIzaSyBh52MlbJJBGNRjJP5tYFwtdEAiYxLqp2s";
@@ -17,7 +17,7 @@ class Maps extends Component {
     }
 // function to call the axios request and get the data
 googlePark = (location, radius, type) => {
-    API.getGoogleMap(location, radius, type)
+    getGoogleMap(location, radius, type)
     .then(res => {
         console.log(res);
         this.setState({
