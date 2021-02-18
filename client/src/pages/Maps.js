@@ -13,21 +13,32 @@ class Maps extends Component {
     };
 // Make sure the function is called on page load
     componentDidMount() {
-        this.googlePark("33.771713,-118.18131", 1500, "park");
-    }
-// function to call the axios request and get the data
-googlePark = (location, radius, type) => {
-    getGoogleMap(location, radius, type)
-    .then(res => {
-        console.log(res);
-        this.setState({
-            icon: res.data.results,
-            name: res.data.results,
-            vicinity: res.data.results
-        });
-    })
-    .catch((err) => console.log(err));
-    // On Ready State Function to change the returned google API data into a JSON Array
+        // function to call the axios request and get the data
+        getGoogleMap("33.771713,-118.18131", 1500, "park")
+        .then((res) => {
+            console.log(res);
+            this.setState({
+                icon: res.data.results,
+                name: res.data.results,
+                vicinity: res.data.results
+            });
+        })
+        .catch((err) => console.log(err));
+//         this.googlePark("33.771713,-118.18131", 1500, "park");
+//     }
+// // function to call the axios request and get the data
+// googlePark = (location, radius, type) => {
+//     getGoogleMap(location, radius, type)
+//     .then(res => {
+//         console.log(res);
+//         this.setState({
+//             icon: res.data.results,
+//             name: res.data.results,
+//             vicinity: res.data.results
+//         });
+//     })
+//     .catch((err) => console.log(err));
+    
     
 }
 
