@@ -2,7 +2,7 @@ import React, { Component, useState } from "react";
 import {getGoogleMap} from "../utils/API";
 import Container from "../components/Container";
 import MapResults from "../components/mapResults";
-const googleApiKey = "AIzaSyBh52MlbJJBGNRjJP5tYFwtdEAiYxLqp2s";
+
 
 
 class Maps extends Component {
@@ -27,7 +27,11 @@ googlePark = (location, radius, type) => {
         });
     })
     .catch((err) => console.log(err));
+    // On Ready State Function to change the returned google API data into a JSON Array
+    
 }
+
+
 render(){
     return(
         <div>
