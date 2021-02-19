@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const User = require('../../models/loginData');
 const db = require('../../models');
-const { default: MapResults } = require('../../client/src/components/mapResults');
+//const { default: MapResults } = require('../../client/src/components/mapResults');
 
 router.get('/', (req, res) => {
 	//this is the route to get current user info

@@ -1,6 +1,6 @@
 import axios from "axios";
 // import googleApiKey from "../../"
- const googleApiKey = "sakdjnasdlfkjadsnf";
+ const googleApiKey = "AIzaSyBh52MlbJJBGNRjJP5tYFwtdEAiYxLqp2s";
 
 //1. Make a POST request to the database
 //2. Generate a GET request on the backend to post the apiKey
