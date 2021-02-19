@@ -7,8 +7,8 @@ import MapResults from "../components/mapResults";
 
 class Maps extends Component {
     state= {
-        icon:"",
         name:"",
+        photos:"",
         vicinity:"",
     };
 // Make sure the function is called on page load
@@ -16,18 +16,18 @@ class Maps extends Component {
         // function to call the axios request and get the data
         getGoogleMap("33.771713,-118.18131", 1500, "park")
         .then((res) => {
-            console.log("getGoogleMap "+res);
+            console.log("Maps.js "+res);
             this.setState({
-                icon: res.data.results,
                 name: res.data.results,
+                photos: res.data.results,
                 vicinity: res.data.results
             });
         })
-        .catch((err) => console.log(err));
-
-    
+        .catch((err) => console.log(err));    
     
 }
+
+
 
 
 render(){
