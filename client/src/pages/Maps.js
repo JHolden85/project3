@@ -35,6 +35,7 @@ render(){
         <div>
             <Container style={{minHeight: "80%"}}>
                 <h1 className="text-center">Parks In Your Area</h1>
+                <h2 className="text-center">Please Delete Later</h2>
             <MapResults/>
            </Container>
         </div>
