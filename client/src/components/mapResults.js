@@ -2,7 +2,7 @@ import React from "react";
 // import "./style.css";
 
 function MapResults(props) {
-    console.log("Google Maps API Call ", props.results)
+    console.log("mapResults.js ", props.results)
     return (
         <h1>TESTING mapResults PAGE</h1>
         // <ul className="list-group search-results">
