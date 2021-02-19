@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../../models/loginData');
 const db = require('../../models');
+//const { default: MapResults } = require('../../client/src/components/mapResults');
 
 router.get('/', (req, res) => {
 	//this is the route to get current user info
@@ -32,6 +33,15 @@ router.post('/login', (req, res) => {
 			//could add session logic and store your session, reference activites from the past
 		}
 	});
+});
+//put our env var on our server, and rename that key to the env later on
+router.get('/getkey', (req, res) => {
+	//this is the route to get current user info
+	res.json({
+		key:"RANDOM TEXT",
+	})
+	
+		
 });
 
 module.exports = router;
