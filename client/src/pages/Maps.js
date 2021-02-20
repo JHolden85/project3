@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import {getGoogleMap} from "../utils/API";
+import API from "../utils/API";
 import Container from "../components/Container";
 import MapResults from "../components/mapResults";
 
@@ -15,7 +15,7 @@ class Maps extends Component {
 // Make sure the function is called on page load
     componentDidMount() {
         // function to call the axios request and get the data
-        getGoogleMap("33.771713,-118.18131", 1500, "park")
+        API.getGoogleMap("33.771713,-118.18131", 1500, "park")
         .then(res => {
             console.log("Maps.js ",res);
             this.setState({
