@@ -38,10 +38,8 @@ router.post('/login', (req, res) => {
 router.get('/getkey', (req, res) => {
 	//this is the route to get current user info
 	res.json({
-		key:"RANDOM TEXT",
-	})
-	
-		
+		key: 'RANDOM TEXT',
+	});
 });
 
 module.exports = router;
