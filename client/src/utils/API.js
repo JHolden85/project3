@@ -32,7 +32,7 @@ export const getGoogleMap = (location, radius, type) => {
    googleApiKey;
    
   //  console.log("API.js " + mapsURL);
-  return axios.get(mapsURL);
+  return axios.get(mapsURL)
   
 };
 
