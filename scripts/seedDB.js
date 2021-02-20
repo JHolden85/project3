@@ -54,3 +54,42 @@ db.Team.remove({})
 		console.error(err);
 		process.exit(1);
 	});
+
+	// const amenitiesSeed = [
+	// 	{
+	// 		parkName: `JOHN MUIR CHILDREN'S PARK`,
+	// 		globalID: 6,
+	// 		amenity: ['basketball', 'baseball/softball', 'swimming', 'playground'],
+	// 	},
+	// 	{
+	// 		parkName: `SHASTA COMMUNITY PARK`,
+	// 		globalID: 5,
+	// 		amenity: ['basketball', 'baseball/softball', 'skatepark', 'playground'],
+	// 	},
+	// 	{
+	// 		parkName: `MEADOWVIEW PARK`,
+	// 		globalID: 4,
+	// 		amenity: ['basketball', 'soccer', 'playground'],
+	// 	},
+	// 	{
+	// 		parkName: `MARK HOPKINS PARK`,
+	// 		globalID: 2,
+	// 		amenity: ['basketball', 'baseball/softball', 'swimming'],
+	// 	},
+	// 	{
+	// 		parkName: `JACINTO CREEK PARK`,
+	// 		globalID: 1,
+	// 		amenity: ['baseball/softball', 'swimming', 'playground'],
+	// 	},
+	// ];
+	
+	// db.Team.remove({})
+	// 	.then(() => db.ParkAmenities.collection.insertMany(amenitiesSeed))
+	// 	.then((data) => {
+	// 		console.log(data.result.n + ' records inserted!');
+	// 		process.exit(0);
+	// 	})
+	// 	.catch((err) => {
+	// 		console.error(err);
+	// 		process.exit(1);
+	// 	});
