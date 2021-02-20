@@ -69,7 +69,7 @@ const [developerState, setDeveloperState] =useState({
     return(
             <Container style={{minHeight: "80%"}}>
                 <h1 className="text-center">Parks In Your Area</h1>
-                <h2 className="text-center">Please Delete Later</h2>
+                <h2 className="text-center">Added just to commit</h2>
                 
              
             <div className="card">
