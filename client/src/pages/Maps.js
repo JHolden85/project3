@@ -2,6 +2,7 @@
 import React, { Component, useState, useEffect } from "react";
 import { getGoogleMap } from "../utils/API";
 import API from "../utils/API";
+import {Link} from "react-router-dom";
 
 import Container from "../components/Container";
 const googleApiKey = "AIzaSyBh52MlbJJBGNRjJP5tYFwtdEAiYxLqp2s";
@@ -32,36 +33,36 @@ const googleApiKey = "AIzaSyBh52MlbJJBGNRjJP5tYFwtdEAiYxLqp2s";
 // //         .catch((err) => console.log(err));
 // =======
 // Make an iFrame and display the maps
-class Maps extends Component {
-    state= {
-        name:[],
-        photos:[],
-        vicinity:[],
-        error:""
-    };
-// Make sure the function is called on page load
-    componentDidMount() {
-        // function to call the axios request and get the data
-        API.getGoogleMap("33.771713,-118.18131", 1500, "park")
-        .then(res => {
-            console.log("Maps.js ",res);
-            this.setState({
-                name: res.data.results,
-                photos: res.data.results,
-                vicinity: res.data.results
-            });
-        })
+// class Maps extends Component {
+//     state= {
+//         name:[],
+//         photos:[],
+//         vicinity:[],
+//         error:""
+//     };
+// // Make sure the function is called on page load
+//     componentDidMount() {
+//         // function to call the axios request and get the data
+//         API.getGoogleMap("33.771713,-118.18131", 1500, "park")
+//         .then(res => {
+//             console.log("Maps.js ",res);
+//             this.setState({
+//                 name: res.data.results,
+//                 photos: res.data.results,
+//                 vicinity: res.data.results
+//             });
+//         })
         
-        .catch((err) => console.log(err));    
+//         .catch((err) => console.log(err));    
         
-}
+// }
 // >>>>>>> main
 
 // }
 //==================================================================
 
 // Setting the developer state
-function Maps() {
+function Maps({setPark}) {
   //   const [developerState, setDeveloperState] = useState({
   //     name: [],
   //     photos: [],
@@ -83,8 +84,8 @@ function Maps() {
   //   // Load all parks and store them with setParks
   useEffect(() => {
     getGoogleMap("38.57933,-121.4909", 1500, "park").then(({ data }) => {
-      console.log(data.results);
-      setParks(data.results);
+      console.log(data);
+      setParks(data);
       // setName()
 
       //     //   Load up the name
@@ -129,7 +130,9 @@ function Maps() {
             <div>Park Name: {park.name}</div>
             <div>Park Address: {park.vicinity}</div>
             <div>Is the Park Open?: {park.business_status}</div>
-            <div href="#"></div>
+            <Link to={`/park/${park.place_id}`}>
+            <button onClick={()=> setPark({...park, imgSrc})} className="btn btn-lg btn-success">Details</button>
+            </Link>
           </div>
         );
     })}
