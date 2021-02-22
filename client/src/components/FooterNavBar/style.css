@@ -1,0 +1,20 @@
+.Footer {
+	padding: 2vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: darkgreen;
+	color: white;
+	text-align: center;
+}
+.footerBtn {
+	padding: 0.8rem;
+	background-color: rgb(30, 116, 35);
+	color: white;
+	border: darkgreen 1px solid;
+	border-radius: 20px;
+}

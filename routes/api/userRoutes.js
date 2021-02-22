@@ -3,7 +3,7 @@ const User = require('../../models/loginData');
 const db = require('../../models');
 //const { default: MapResults } = require('../../client/src/components/mapResults');
 
-router.get('/', (req, res) => {
+router.get('/team', (req, res) => {
 	//this is the route to get current user info
 
 	db.Team.find({})
@@ -16,24 +16,13 @@ router.get('/', (req, res) => {
 router.post('/team', (req, res) => {
 	//this is the route create a team
 	console.log(req.session);
-	db.Teamm.create({
+	db.Team.create({
 		...req.body,
 		members: [{ id: req.session.user_id, name: req.session.username }],
 	})
 		.then((teamDB) => {
 			console.log(teamDB);
 			// User.findByIdAndUpdate()
-			res.json(teamDB);
-		})
-		.catch((err) => res.status(400).json(err));
-});
-
-router.get('/', (req, res) => {
-	//this is the route to get current user info
-
-	db.Team.find({})
-		.then((teamDB) => {
-			console.log(teamDB);
 			res.json(teamDB);
 		})
 		.catch((err) => res.status(400).json(err));
