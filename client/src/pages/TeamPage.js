@@ -5,7 +5,7 @@ import TeamCard from '../components/TeamCard';
 
 const TeamPage = () => {
 	const [team, setTeam] = useState([]);
-	const [formObject, setFormObject] = useState({});
+	// const [formObject, setFormObject] = useState({});
 
 	useEffect(() => {
 		loadTeam();
@@ -31,9 +31,8 @@ const TeamPage = () => {
 	}
 	function sportsStringify(team) {
 		for (let i = 0; i < team.length; i++) {
-			console.log(team[i].sports);
 			let newArray = team[i].sports.map((x) => x);
-			console.log('new array: ' + newArray);
+
 			newArray.join(', ');
 
 			team[i].sports = newArray;
