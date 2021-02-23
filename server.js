@@ -6,24 +6,32 @@ const app = express();
 const MongoStore = require('connect-mongo')(session);
 
 const PORT = process.env.PORT || 3001;
+require("dotenv").config();
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Parcs', {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-	useCreateIndex: true,
-	useFindAndModify: false,
-});
 
-//initialize mongostore + session
-app.use(
-	session({
-		secret: 'The worst thing about prison was the Dementors',
-		cookie: { maxAge: 200000000 },
-		resave: false,
-		saveUninitialized: true,
-		store: new MongoStore({ mongooseConnection: mongoose.connection }),
-	})
-);
+// ============================================================
+// Ask the team if this is needed prior to deleting
+
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Parcs', {
+// 	useNewUrlParser: true,
+// 	useUnifiedTopology: true,
+// 	useCreateIndex: true,
+// 	useFindAndModify: false,
+// });
+
+// //initialize mongostore + session
+// app.use(
+// 	session({
+// 		secret: 'The worst thing about prison was the Dementors',
+// 		cookie: { maxAge: 200000000 },
+// 		resave: false,
+// 		saveUninitialized: true,
+// 		store: new MongoStore({ mongooseConnection: mongoose.connection }),
+// 	})
+// );
+// ================================================================
+
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
