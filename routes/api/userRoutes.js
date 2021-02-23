@@ -3,7 +3,7 @@ const User = require("../../models/loginData");
 const db = require("../../models");
 //const { default: MapResults } = require('../../client/src/components/mapResults');
 
-router.get("/", (req, res) => {
+router.get("/team", (req, res) => {
   //this is the route to get current user info
 
   db.Team.find({})

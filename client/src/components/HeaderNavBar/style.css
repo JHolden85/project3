@@ -1,0 +1,14 @@
+.Header {
+	background-color: darkgreen;
+	padding: 1vh;
+	align-content: center;
+	font-size: 260%;
+}
+
+.link {
+	color: white;
+	text-decoration: none;
+}
+#navlink {
+	padding-right: 4vh;
+}
