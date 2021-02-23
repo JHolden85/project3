@@ -7,10 +7,13 @@ import TeamPage from './pages/TeamPage';
 import SinglePark from './pages/SingleParkPage';
 // import logo from './logo.svg';
 import './App.css';
+import HeaderNavBar from './components/HeaderNavBar';
+import FooterNavBar from './components/FooterNavBar';
 
 function App() {
 	const [activePark, setActivePark] = useState({})
 	return (
+
 		<Router>
 			<Switch>
 				<Route exact path="/Maps" >
@@ -25,6 +28,7 @@ function App() {
 				<Route path="*" component={FourOFour} />
 			</Switch>
 		</Router>
+
 	);
 }
 
