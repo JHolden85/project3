@@ -3,6 +3,6 @@ const User = require('../../models/loginData');
 const db = require('../../models');
 const withAuth = require('../utils/auth');
 
-router.get('/Teams', withAuth, (req, res) => {
+router.get('/team', withAuth, (req, res) => {
 	res.status(200).json({ mes: 'authorize' });
 });
