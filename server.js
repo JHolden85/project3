@@ -6,31 +6,30 @@ const app = express();
 const MongoStore = require('connect-mongo')(session);
 
 const PORT = process.env.PORT || 3001;
-require("dotenv").config();
+require('dotenv').config();
 
+// MongoDB Connection and Session Storage - CP
+// ///////////////////////////////////////////////////////////////////////
 
-// ============================================================
-// Ask the team if this is needed prior to deleting
+// Connects to Local DB or Atlas
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Parcs', {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useCreateIndex: true,
+	useFindAndModify: false,
+});
 
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Parcs', {
-// 	useNewUrlParser: true,
-// 	useUnifiedTopology: true,
-// 	useCreateIndex: true,
-// 	useFindAndModify: false,
-// });
-
-// //initialize mongostore + session
-// app.use(
-// 	session({
-// 		secret: 'The worst thing about prison was the Dementors',
-// 		cookie: { maxAge: 200000000 },
-// 		resave: false,
-// 		saveUninitialized: true,
-// 		store: new MongoStore({ mongooseConnection: mongoose.connection }),
-// 	})
-// );
-// ================================================================
-
+//initialize mongostore + session storage
+app.use(
+	session({
+		secret: 'The worst thing about prison was the Dementors',
+		cookie: { maxAge: 200000000 },
+		resave: false,
+		saveUninitialized: true,
+		store: new MongoStore({ mongooseConnection: mongoose.connection }),
+	})
+);
+// ///////////////////////////////////////////////////////////////////////
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));

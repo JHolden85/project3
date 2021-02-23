@@ -2,10 +2,15 @@
 	background-color: darkgreen;
 	padding: 1vh;
 	align-content: center;
+	width: 100%;
 	font-size: 260%;
 }
 
 .link {
+	color: white;
+	text-decoration: none;
+}
+.link:hover {
 	color: white;
 	text-decoration: none;
 }

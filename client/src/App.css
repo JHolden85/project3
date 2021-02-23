@@ -39,11 +39,12 @@
 .parksDiv {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
 	flex-wrap: wrap;
+	justify-content: space-evenly;
+	order: 5;
 }
 .card {
-	margin: 1rem;
+	margin: 0.5rem;
 }
 .btn {
 }

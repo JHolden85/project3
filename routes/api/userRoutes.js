@@ -3,6 +3,8 @@ const User = require('../../models/loginData');
 const db = require('../../models');
 //const { default: MapResults } = require('../../client/src/components/mapResults');
 
+// Team Routes - CP
+// ///////////////////////////////////////////
 router.get('/team', (req, res) => {
 	// Gets all Team data
 	db.Team.find({})
@@ -26,6 +28,7 @@ router.post('/team', (req, res) => {
 		})
 		.catch((err) => res.status(400).json(err));
 });
+// ///////////////////////////////////////////
 
 router.post('/signup', (req, res) => {
 	//sign up the user
