@@ -15,13 +15,13 @@ const teamSeed = [
 	{
 		name: 'Barry Manilow',
 		lastLogin: Date.now,
-		sports: ['soccer', 'football'],
+		sports: 'soccer, football',
 		checkedIn: true,
 	},
 	{
 		name: 'Chuck Barry',
 		lastLogin: Date.now,
-		sports: ['soccer', 'handball', 'tennis'],
+		sports: 'soccer, handball, tennis',
 		checkedIn: true,
 	},
 	{
@@ -33,13 +33,13 @@ const teamSeed = [
 	{
 		name: 'Very Barry',
 		lastLogin: Date.now,
-		sports: ['tennis', 'handball', 'soccer'],
+		sports: 'tennis, handball, soccer',
 		checkedIn: true,
 	},
 	{
 		name: 'Marry Barry',
 		lastLogin: Date.now,
-		sports: ['handball', 'football'],
+		sports: 'handball, football',
 		checkedIn: true,
 	},
 ];

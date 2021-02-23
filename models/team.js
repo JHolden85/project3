@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const team = new Schema({
 	name: { type: String, required: true },
 	lastLogin: { type: Date, default: Date.now },
-	sports: { type: String },
+	sports: [{ type: String }],
 	checkedIn: { type: Boolean },
 });
 

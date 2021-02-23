@@ -1,9 +1,68 @@
-import React, { useState, useEffect } from "react";
+
+import React, { Component, useState, useEffect } from "react";
 import { getGoogleMap } from "../utils/API";
+import API from "../utils/API";
+
 import Container from "../components/Container";
 const googleApiKey = process.env.REACT_APP_googleApiKey;
 // import MapResults from "../components/mapResults";
+<<<<<<< HEAD
 //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+=======
+
+// Make an iFrame and display the maps FOR SETTING A CLASS
+// class Maps extends Component {
+//     state= {
+//         name:[],
+//         photos:[],
+//         vicinity:[],
+//         error:""
+//     };
+// Make sure the function is called on page load FOR SETTING A CLASS
+//     componentDidMount() {
+//         // function to call the axios request and get the data
+//         getGoogleMap("33.771713,-118.18131", 1500, "park")
+//         .then(res => {
+//             console.log("Maps.js ",res);
+//             this.setState({
+//                 name: res.data.results,
+//                 photos: res.data.results,
+//                 vicinity: res.data.results
+//             });
+//         })
+
+// <<<<<<< Nick
+// //         .catch((err) => console.log(err));
+// =======
+// Make an iFrame and display the maps
+class Maps extends Component {
+    state= {
+        name:[],
+        photos:[],
+        vicinity:[],
+        error:""
+    };
+// Make sure the function is called on page load
+    componentDidMount() {
+        // function to call the axios request and get the data
+        API.getGoogleMap("33.771713,-118.18131", 1500, "park")
+        .then(res => {
+            console.log("Maps.js ",res);
+            this.setState({
+                name: res.data.results,
+                photos: res.data.results,
+                vicinity: res.data.results
+            });
+        })
+        
+        .catch((err) => console.log(err));    
+        
+}
+// >>>>>>> main
+
+// }
+//==================================================================
+>>>>>>> 8b8e4dc386e3ff91bba134dcace1e0056de6951a
 
 // Setting the developer state
 function Maps() {
