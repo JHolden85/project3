@@ -1,7 +1,6 @@
 // TeamCard.js
 
 import React from 'react';
-
 import './style.css';
 
 const TeamCard = (props) => {

@@ -20,18 +20,6 @@ const TeamPage = () => {
 			.catch((err) => console.log(err));
 	}
 
-	// function checkInValidation(team) {
-	// 	for (let i = 0; i < team[i].members.length; i++) {
-	// 		if (team[i].members[i].checkedIn === true) {
-	// 			team[i].members[i].checkedIn = 'Checked in!';
-	// 		} else if (team[i].members[i].checkedIn === false) {
-	// 			team[i].members[i].checkedIn = 'Not checked in';
-	// 		}
-	// 	}
-	// }
-
-	// checkInValidation(team);
-
 	return (
 		<div>
 			<CardContainer>
