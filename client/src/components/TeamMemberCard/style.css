@@ -1,4 +1,4 @@
-#card {
+#MemberCard {
 	margin: 2rem;
 	background-color: rgb(79, 168, 79);
 	border: rgb(0, 83, 0) 2px solid;
@@ -17,4 +17,7 @@ h4 {
 }
 p {
 	font-size: 130%;
+}
+ul {
+	list-style-type: none;
 }
