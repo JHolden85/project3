@@ -1,0 +1,20 @@
+#card {
+	margin: 2rem;
+	background-color: rgb(79, 168, 79);
+	border: rgb(0, 83, 0) 2px solid;
+	border-radius: 25px;
+	color: white;
+}
+
+h1 {
+	text-align: center;
+}
+h3 {
+	text-align: center;
+}
+h4 {
+	text-align: center;
+}
+p {
+	font-size: 130%;
+}
