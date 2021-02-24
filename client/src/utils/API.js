@@ -6,8 +6,8 @@ const googleApiKey = process.env.REACT_APP_googleApiKey;
 const signup = (data) => axios.post('/api/user/signup', data);
 const login = (data) => axios.post('/api/user/login', data);
 
-const getTeam = (teamData) => axios.get('/api/user', teamData);
-const postTeam = (teamData) => axios.post('/api/user', teamData);
+const getTeam = (teamData) => axios.get('/api/user/team', teamData);
+const postTeam = (teamData) => axios.post('/api/user/team', teamData);
 
 const getUser = () => axios.get('/api/user/current_user');
 const logout = () => axios.get('/api/user/logout');
