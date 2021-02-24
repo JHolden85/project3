@@ -26,14 +26,9 @@ function App() {
     });
   }, []);
 
-  const handleLogout = () => {
-    API.logout().then((data) => {
-      window.location.replace("/user/login");
-    });
-  };
   return (
     <div>
-      <HeaderNavBar />
+      <HeaderNavBar username={user?.username || ""} />
       <Router>
         {!user && !loading && <Redirect to="/user/login" />}
         <Switch>
@@ -47,9 +42,6 @@ function App() {
           <Route exact path="/photo" component={PhotoUpload} />
           <Route path="*" component={FourOFour} />
         </Switch>
-        {/* temporary logout btn */}
-        <button onClick={handleLogout}>Log Out</button>
-        <h3>Hello {user?.username}</h3>
       </Router>
       <FooterNavBar />
     </div>
