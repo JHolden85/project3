@@ -2,12 +2,14 @@
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
+	justify-content: space-evenly;
 }
 
 .TeamCard {
 	align-content: center;
 	background-color: darkgreen;
-	margin: 20px;
+	margin: 0px 20px;
+	margin-top: 20px;
 	border-radius: 20px;
 	color: white;
 }
@@ -19,4 +21,22 @@
 #teamsport {
 	margin-left: auto;
 	margin-right: auto;
+}
+.TeamOptions {
+	flex-direction: row;
+	background-color: green;
+	margin: 0px 35px;
+	padding: 15px 0px;
+}
+.TeamBtn {
+	padding: 0.8rem;
+	background-color: rgb(30, 116, 35);
+	color: white;
+	border: darkgreen 2px solid;
+	border-radius: 20px;
+	width: 5.2rem;
+	outline: none;
+}
+#deleteBtn {
+	background-color: rgb(212, 65, 65);
 }

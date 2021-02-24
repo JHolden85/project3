@@ -5,6 +5,8 @@ const db = require('../../models');
 
 // Team Routes - CP
 // ///////////////////////////////////////////
+
+// Get current Team
 router.get('/team', (req, res) => {
 	// Gets all Team data
 	db.Team.find({})
@@ -14,13 +16,39 @@ router.get('/team', (req, res) => {
 		})
 		.catch((err) => res.status(400).json(err));
 });
+
+// Create a Team
 router.post('/team', (req, res) => {
 	//Posts a new team
-	console.log(req.session);
 	db.Team.create({
 		...req.body,
 		members: [{ id: req.session.user_id, name: req.session.username }],
 	})
+		.then((teamDB) => {
+			console.log(teamDB);
+			res.json(teamDB);
+		})
+		.catch((err) => res.status(400).json(err));
+});
+
+// Update a Team
+router.put('/team', (req, res) => {
+	//Posts a new team member
+	db.Team.findByIdAndUpdate('603420a7415ae741b04297c5', {
+		$push: { members: { id: req._id, name: req.name } },
+	})
+		.then((teamDB) => {
+			console.log(teamDB);
+			res.json(teamDB);
+		})
+		.catch((err) => res.status(400).json(err));
+});
+
+// Delete a Team
+router.delete('/team', (req, res) => {
+	//Posts a new team
+	console.log(req.session);
+	db.Team.destroy({ _id }, ...req.body)
 		.then((teamDB) => {
 			console.log(teamDB);
 			// User.findByIdAndUpdate()

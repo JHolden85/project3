@@ -38,13 +38,15 @@
 }
 .parksDiv {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-evenly;
   order: 5;
 }
 .card {
   margin: 0.5rem;
+  width: 100%;
+  height: 100%;
 }
 .btn {
 }
