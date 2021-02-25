@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Parcs', {
 app.use(
 	session({
 		secret: 'The worst thing about prison was the Dementors',
-		cookie: { maxAge: 200000000 },
+		cookie: { maxAge: 200000000000 },
 		resave: false,
 		saveUninitialized: true,
 		store: new MongoStore({ mongooseConnection: mongoose.connection }),

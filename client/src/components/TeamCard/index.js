@@ -30,14 +30,6 @@ const TeamCard = () => {
 					</div>
 				);
 			})}
-
-			<div className="flex TeamOptions">
-				<button className="TeamBtn">Add Member</button>
-				<button className="TeamBtn">Update Name</button>
-				<button className="TeamBtn" id="deleteBtn">
-					Delete Team
-				</button>
-			</div>
 		</div>
 	);
 };

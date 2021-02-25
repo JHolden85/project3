@@ -32,9 +32,9 @@ router.post('/team', (req, res) => {
 });
 
 // Update a Team
-router.put('/team', (req, res) => {
+router.put('/team/:_id', (req, res) => {
 	//Posts a new team member
-	db.Team.findByIdAndUpdate('603420a7415ae741b04297c5', {
+	db.Team.findByIdAndUpdate(req.params._id, {
 		$push: { members: { id: req._id, name: req.name } },
 	})
 		.then((teamDB) => {

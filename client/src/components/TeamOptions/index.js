@@ -1,14 +1,15 @@
 // AddMember.js
 
 import React from 'react';
+import plusBtn from '../../Assets/plusBtn.png';
 import './style.css';
 
 const AddMember = (props) => {
 	return (
 		<div className="flex">
 			<dvi className="AddMember">
-				<button>Add</button>
-				<input>{props.username}</input>
+				<img src={plusBtn} alt="*"></img>
+				<input placeholder="Search by username here"></input>;
 			</dvi>
 		</div>
 	);

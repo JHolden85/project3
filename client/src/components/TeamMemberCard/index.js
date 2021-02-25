@@ -12,7 +12,6 @@ const TeamMemberCard = () => {
 	function loadTeam() {
 		API.getTeam()
 			.then(({ data }) => {
-				console.log(data);
 				setTeam(data);
 			})
 			.catch((err) => console.log(err));
@@ -37,7 +36,7 @@ const TeamMemberCard = () => {
 		<div id="MemberCard">
 			{team.map((team, index) => {
 				return (
-					<div key={team._id}>
+					<div key={team.members[index].id}>
 						<h1>{team.members[index].name}</h1>
 						<h3>{team.members[index].checkedIn}</h3>
 					</div>
