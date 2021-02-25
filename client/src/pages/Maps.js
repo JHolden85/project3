@@ -15,7 +15,7 @@ function Maps() {
   const [parks, setParks] = useState([]);
   //Call to retreive the API data, and then load into the setParks function
   useEffect(() => {
-    getGoogleMap("33.771713,-118.18131", 1500, "park").then(({ data }) => {
+    getGoogleMap("33.771713,-118.18131", 10000, "park").then(({ data }) => {
       console.log(data.results);
       setParks(data.results);
       
