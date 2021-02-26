@@ -32,27 +32,38 @@ router.post('/team', (req, res) => {
 });
 
 // Update a Team
-router.put('/team/:_id', (req, res) => {
+router.put('/team', async (req, res) => {
 	//Posts a new team member
-	db.Team.findByIdAndUpdate(req.params._id, {
+
+	// Finds User based off username
+	const member = await User.findOne({ username: req.body.memberId });
+	// Pushes user into Team member list
+	db.Team.findByIdAndUpdate(req.body.teamId, {
 		$push: {
-			members: { id: req.body._id, checkedIn: false, name: req.body.name },
+			members: {
+				id: member._id,
+				checkedIn: false,
+				name: member.name || member.username,
+			},
 		},
 	})
 		.then((teamDB) => {
-			console.log(teamDB);
 			res.json(teamDB);
 		})
 		.catch((err) => res.status(400).json(err));
 });
 
 // Delete a Team
-router.delete('/team', (req, res) => {
+router.delete('/team', async (req, res) => {
+	console.log('router side', req);
+	// Find Team by ID
+	const team = await db.Team.findById(req.body._id.teamId);
 	//Delete a team
-	db.Team.destroy(req.params._id, ...req.body)
+	console.log('ID', team);
+	db.Team.findByIdAndDelete(team)
 		.then(() => {
-			// console.log(teamDB);
-			res.json({ msg: 'team successfully deleted ' });
+			console.log('team successfully deleted');
+			res.status(200).json({ msg: 'success' });
 		})
 		.catch((err) => res.status(400).json(err));
 });
