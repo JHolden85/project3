@@ -35,7 +35,9 @@ router.post('/team', (req, res) => {
 router.put('/team/:_id', (req, res) => {
 	//Posts a new team member
 	db.Team.findByIdAndUpdate(req.params._id, {
-		$push: { members: { id: req._id, name: req.name } },
+		$push: {
+			members: { id: req.body._id, checkedIn: false, name: req.body.name },
+		},
 	})
 		.then((teamDB) => {
 			console.log(teamDB);
@@ -46,13 +48,11 @@ router.put('/team/:_id', (req, res) => {
 
 // Delete a Team
 router.delete('/team', (req, res) => {
-	//Posts a new team
-	console.log(req.session);
-	db.Team.destroy({ _id }, ...req.body)
-		.then((teamDB) => {
-			console.log(teamDB);
-			// User.findByIdAndUpdate()
-			res.json(teamDB);
+	//Delete a team
+	db.Team.destroy(req.params._id, ...req.body)
+		.then(() => {
+			// console.log(teamDB);
+			res.json({ msg: 'team successfully deleted ' });
 		})
 		.catch((err) => res.status(400).json(err));
 });

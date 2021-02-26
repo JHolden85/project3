@@ -1,0 +1,12 @@
+.newTeam {
+	margin: 40px;
+	padding: 40px;
+	background-color: darkgreen;
+	border-radius: 25px;
+	color: white;
+}
+.newTeamInput {
+	border-radius: 10px;
+	background-color: rgb(228, 250, 228);
+	color: black;
+}
