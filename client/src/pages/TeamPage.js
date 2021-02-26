@@ -16,18 +16,18 @@ const TeamPage = () => {
 	function loadTeam() {
 		API.getTeam()
 			.then(({ data }) => {
-				console.log(data);
 				setTeam(data);
 			})
 			.catch((err) => console.log(err));
 	}
 
+	console.log('team', team);
 	if (team.length !== 0) {
 		return (
 			<div>
 				<CardContainer>
 					<TeamCard />
-					<TeamOptionCard />
+					<TeamOptionCard team={team} />
 					<TeamMemberCard />
 				</CardContainer>
 			</div>

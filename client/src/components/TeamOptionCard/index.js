@@ -1,12 +1,13 @@
 // TeamOptionCard.js
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import plusBtn from '../../Assets/plusBtn.png';
 import deleteBtn from '../../Assets/delete.png';
 import API from '../../utils/API';
 import './style.css';
 
-const TeamOptionCard = () => {
+const TeamOptionCard = ({ team }) => {
+	const inputRef = useRef();
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const [state, setState] = useState({
 		newMember: false,
@@ -14,7 +15,10 @@ const TeamOptionCard = () => {
 		delete: false,
 	});
 
-	const addMember = () => {
+	// Functions to toggle team options into on or off positions
+	// Only one toggle can be set to active at a time
+	// ///////////////////////////////////////////////////////////
+	const addMemberToggle = () => {
 		if (!state.newMember) {
 			setState({
 				newMember: true,
@@ -30,7 +34,7 @@ const TeamOptionCard = () => {
 		}
 	};
 
-	const updateTeam = () => {
+	const updateTeamToggle = () => {
 		if (!state.updateName) {
 			setState({
 				newMember: false,
@@ -46,7 +50,7 @@ const TeamOptionCard = () => {
 		}
 	};
 
-	const deleteTeam = () => {
+	const deleteTeamToggle = () => {
 		if (!state.delete) {
 			setState({
 				newMember: false,
@@ -61,31 +65,38 @@ const TeamOptionCard = () => {
 			});
 		}
 	};
+	// ///////////////////////////////////////////////////////////
 
 	const handleAdd = () => {
-		const member = document.getElementById('user').value;
-		const addMember = document.getElementById('addMember');
+		API.updateMembers({ memberId: inputRef.current.value, teamId: team[0]._id })
+			.then((res) => {
+				console.log(res);
+			})
+			.catch((err) => console.log(err));
 
-		addMember.addEventListener('click', (req, res) => {
-			API.updateMembers(member)
-				.then((res) => {
-					console.log(res);
-					res.json(res.data);
-				})
-				.catch((err) => console.log(err));
-		});
+		window.location.reload();
+	};
+
+	const handleDelete = () => {
+		console.log('clicked');
+		API.deleteTeam({ teamId: team[0]._id })
+			.then((res) => {
+				console.log(res);
+				console.log('api hit');
+			})
+			.catch((err) => console.log(err));
 	};
 
 	return (
 		<div>
 			<div className="flex TeamOptions">
-				<button className="TeamBtn" onClick={addMember}>
+				<button className="TeamBtn" onClick={addMemberToggle}>
 					Add Member
 				</button>
-				<button className="TeamBtn" onClick={updateTeam}>
+				<button className="TeamBtn" onClick={updateTeamToggle}>
 					Update Name
 				</button>
-				<button className="TeamBtn" onClick={deleteTeam} id="deleteBtn">
+				<button className="TeamBtn" onClick={deleteTeamToggle} id="deleteBtn">
 					Delete Team
 				</button>
 			</div>
@@ -102,6 +113,7 @@ const TeamOptionCard = () => {
 							></img>
 						</button>
 						<input
+							ref={inputRef}
 							className="option"
 							placeholder="Search by username here"
 							id="user"
@@ -120,7 +132,7 @@ const TeamOptionCard = () => {
 					<div className="optionDiv deleteDiv">
 						<h3 className="option">Click to confirm delete</h3>
 						<br></br>
-						<button className="optionBtn" id="delete">
+						<button className="optionBtn" id="delete" onClick={handleDelete}>
 							<img
 								src={deleteBtn}
 								alt="*"

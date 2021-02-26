@@ -10,8 +10,10 @@
 	background-color: darkgreen;
 	margin: 0px 20px;
 	margin-top: 20px;
+	padding: 10px;
 	border-radius: 20px;
 	color: white;
+	word-wrap: break-word;
 }
 
 #teamname {

@@ -14,7 +14,6 @@ const TeamCard = () => {
 	function loadTeam() {
 		API.getTeam()
 			.then(({ data }) => {
-				console.log(data);
 				setTeam(data);
 			})
 			.catch((err) => console.log(err));
