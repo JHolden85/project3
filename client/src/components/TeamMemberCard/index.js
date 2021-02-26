@@ -1,8 +1,10 @@
+// TeamMemberCard.js
+
 import React, { useState, useEffect } from 'react';
 import API from '../../utils/API';
 import './style.css';
 
-const TeamMemberCard = (props) => {
+const TeamMemberCard = () => {
 	const [team, setTeam] = useState([]);
 
 	useEffect(() => {
@@ -12,7 +14,6 @@ const TeamMemberCard = (props) => {
 	function loadTeam() {
 		API.getTeam()
 			.then(({ data }) => {
-				console.log(data);
 				setTeam(data);
 			})
 			.catch((err) => console.log(err));
@@ -37,12 +38,10 @@ const TeamMemberCard = (props) => {
 		<div id="MemberCard">
 			{team.map((team, index) => {
 				return (
-					<ul>
-						<li key={team._id}>
-							<h1>{team.members[index].name}</h1>
-							<h3>{team.members[index].checkedIn}</h3>
-						</li>
-					</ul>
+					<div key={team.members[index].id}>
+						<h1>{team.members[index].name}</h1>
+						<h3>{team.members[index].checkedIn}</h3>
+					</div>
 				);
 			})}
 		</div>

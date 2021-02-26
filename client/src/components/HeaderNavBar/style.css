@@ -16,4 +16,8 @@
 }
 #navlink {
 	padding-right: 4vh;
+	align-self: center;
+}
+.hello {
+	color: white;
 }
