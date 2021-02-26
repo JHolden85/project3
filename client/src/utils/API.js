@@ -11,7 +11,8 @@ const login = (data) => axios.post('/api/user/login', data);
 // ///////////////////////////////////////////////////////////////////////////////
 const getTeam = (teamData) => axios.get('/api/user/team', teamData);
 const postTeam = (teamData) => axios.post('/api/user/team', teamData);
-const deleteTeam = (teamData) => axios.delete('/api/user/team/:_id', teamData);
+const deleteTeam = (teamData) =>
+	axios.delete('/api/user/team', { data: { _id: teamData } });
 const updateMembers = (teamData) => axios.put('api/user/team', teamData);
 // ///////////////////////////////////////////////////////////////////////////////
 

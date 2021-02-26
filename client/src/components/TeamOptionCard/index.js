@@ -70,7 +70,7 @@ const TeamOptionCard = ({ team }) => {
 	const handleAdd = () => {
 		API.updateMembers({ memberId: inputRef.current.value, teamId: team[0]._id })
 			.then((res) => {
-				console.log(res);
+				console.log('sending new member: ', res);
 			})
 			.catch((err) => console.log(err));
 
@@ -78,13 +78,14 @@ const TeamOptionCard = ({ team }) => {
 	};
 
 	const handleDelete = () => {
-		console.log('clicked');
+		console.log('team state', team);
 		API.deleteTeam({ teamId: team[0]._id })
 			.then((res) => {
-				console.log(res);
+				console.log('Sending: ', res);
 				console.log('api hit');
 			})
 			.catch((err) => console.log(err));
+		// window.location.reload();
 	};
 
 	return (

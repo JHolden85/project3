@@ -54,14 +54,16 @@ router.put('/team', async (req, res) => {
 });
 
 // Delete a Team
-router.delete('/team/:_id', async (req, res) => {
+router.delete('/team', async (req, res) => {
+	console.log('router side', req);
 	// Find Team by ID
-	const team = await db.Team.findById(req.body.teamId);
+	const team = await db.Team.findById(req.body._id.teamId);
 	//Delete a team
-	console.log('api', team);
+	console.log('ID', team);
 	db.Team.findByIdAndDelete(team)
 		.then(() => {
 			console.log('team successfully deleted');
+			res.status(200).json({ msg: 'success' });
 		})
 		.catch((err) => res.status(400).json(err));
 });
