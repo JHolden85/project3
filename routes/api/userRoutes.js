@@ -91,7 +91,7 @@ router.get('/logout', (req, res) => {
 	});
 });
 
-// router to post pictures 
-router.post("/user")
+// // router to post pictures 
+// router.post("/user")
 
 module.exports = router;
