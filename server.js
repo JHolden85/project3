@@ -5,7 +5,7 @@ const routes = require('./routes');
 const app = express();
 const MongoStore = require('connect-mongo')(session);
 
-const PORT = process.env.PORT || 3008;
+const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
 // MongoDB Connection and Session Storage - CP
