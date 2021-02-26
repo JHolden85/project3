@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const routes = require('./routes');
 const app = express();
 const MongoStore = require('connect-mongo')(session);
+const multer = require("multer");
 
-const PORT = process.env.PORT || 3008;
+const PORT = process.env.PORT || 3001;
 require('dotenv').config();
 
 // MongoDB Connection and Session Storage - CP
@@ -43,18 +44,20 @@ if (process.env.NODE_ENV === 'production') {
 app.use(routes);
 
 //Using middleware Multer to upload photos to mongoDB
-app.use(multer({ dest: './uploads/',
-  rename: function (fieldname, filename) {
-    return filename;
-  },
-}));
-
-app.post('/api/photo',function(req,res){
-  var newItem = new Item();
-  newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
-  newItem.img.contentType = 'image/png';
-  newItem.save();
-});
+// ::::::::::::::Waiting Chads review:::::::::::::::::::::::
+// app.use(multer({ dest: './uploads/',
+//   rename: function (fieldname, filename) {
+//     return filename;
+//   },
+// }));
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// app.post('/api/photo',function(req,res){
+//   var newItem = new Item();
+//   newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
+//   newItem.img.contentType = 'image/png';
+//   newItem.save();
+// });
+// :::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 // Start the API server
 app.listen(PORT, function () {
