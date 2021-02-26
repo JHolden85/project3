@@ -21,20 +21,20 @@ const logout = () => axios.get('/api/user/logout');
 
 export const getGoogleMap = (location, radius, type) => {
 	const mapsURL =
-		'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' +
-		//location lat & lon
-		// "33.771713,-118.18131"
-		location +
-		'&radius=' +
-		//radius in a circular meter
-		// "1500"
-		radius +
-		'&type=' +
-		//place type ie Park, Restaurant, Movie-Theater, etc
-		// "park"
-		type +
-		'&key=' +
-		googleApiKey;
+		`/api/google/parksearch/${encodeURIComponent(location)}/${radius}/${type}`
+		// //location lat & lon
+		// // "33.771713,-118.18131"
+		// location +
+		// '&radius=' +
+		// //radius in a circular meter
+		// // "1500"
+		// radius +
+		// '&type=' +
+		// //place type ie Park, Restaurant, Movie-Theater, etc
+		// // "park"
+		// type +
+		// '&key=' +
+		// googleApiKey;
 
 	//  console.log("API.js " + mapsURL);
 	return axios.get(mapsURL);
