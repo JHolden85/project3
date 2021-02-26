@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import axios from 'axios';
 
 // User routes
@@ -8,9 +9,9 @@ const login = (data) => axios.post('/api/user/login', data);
 // ///////////////////////////////////////////////////////////////////////////////
 const getTeam = (teamData) => axios.get('/api/user/team', teamData);
 const postTeam = (teamData) => axios.post('/api/user/team', teamData);
-const deleteTeam = (teamData) => axios.delete('/api/user/team/:id', teamData);
-const updateMembers = (teamData) => axios.put('api/user/team/:id', teamData);
-
+const deleteTeam = (teamData) =>
+	axios.delete('/api/user/team', { data: { _id: teamData } });
+const updateMembers = (teamData) => axios.put('api/user/team', teamData);
 // ///////////////////////////////////////////////////////////////////////////////
 
 const getUser = () => axios.get('/api/user/current_user');

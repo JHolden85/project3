@@ -35,15 +35,19 @@ const TeamMemberCard = () => {
 	checkInValidation(team);
 
 	return (
-		<div id="MemberCard">
-			{team.map((team, index) => {
-				return (
-					<div key={team.members[index].id}>
-						<h1>{team.members[index].name}</h1>
-						<h3>{team.members[index].checkedIn}</h3>
-					</div>
-				);
-			})}
+		<div>
+			{team.length
+				? team[0].members?.map((member) => {
+						return (
+							<div id="MemberDiv">
+								<div id="MemberCard" key={member.id}>
+									<h1>{member.name}</h1>
+									<h3 id="h3">{member.checkedIn}</h3>
+								</div>
+							</div>
+						);
+				  })
+				: null}
 		</div>
 	);
 };
