@@ -5,7 +5,7 @@ const routes = require('./routes');
 const app = express();
 const MongoStore = require('connect-mongo')(session);
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3008;
 require('dotenv').config();
 
 // MongoDB Connection and Session Storage - CP
@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Parcs', {
 app.use(
 	session({
 		secret: 'The worst thing about prison was the Dementors',
-		cookie: { maxAge: 200000000 },
+		cookie: { maxAge: 200000000000 },
 		resave: false,
 		saveUninitialized: true,
 		store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -41,6 +41,20 @@ if (process.env.NODE_ENV === 'production') {
 // Add routes, both API and view
 
 app.use(routes);
+
+//Using middleware Multer to upload photos to mongoDB
+app.use(multer({ dest: './uploads/',
+  rename: function (fieldname, filename) {
+    return filename;
+  },
+}));
+
+app.post('/api/photo',function(req,res){
+  var newItem = new Item();
+  newItem.img.data = fs.readFileSync(req.files.userPhoto.path)
+  newItem.img.contentType = 'image/png';
+  newItem.save();
+});
 
 // Start the API server
 app.listen(PORT, function () {

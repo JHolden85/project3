@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import API from '../utils/API';
 import CardContainer from '../components/CardContainer';
 import TeamCard from '../components/TeamCard';
 import TeamMemberCard from '../components/TeamMemberCard';
+import TeamOptionCard from '../components/TeamOptionCard';
+import TeamCreate from '../components/TeamCreate';
 
 const TeamPage = () => {
-	const [team, setTeam] = useState([]);
+	const [team, setTeam] = useState({});
 
 	useEffect(() => {
 		loadTeam();
@@ -20,32 +22,23 @@ const TeamPage = () => {
 			.catch((err) => console.log(err));
 	}
 
-	// function checkInValidation(team) {
-	// 	for (let i = 0; i < team[i].members.length; i++) {
-	// 		if (team[i].members[i].checkedIn === true) {
-	// 			team[i].members[i].checkedIn = 'Checked in!';
-	// 		} else if (team[i].members[i].checkedIn === false) {
-	// 			team[i].members[i].checkedIn = 'Not checked in';
-	// 		}
-	// 	}
-	// }
-
-	// checkInValidation(team);
-
-	return (
-		<div>
-			<CardContainer>
-				<div>
-					{team.map((card) => (
-						<TeamCard {...card} />
-					))}
-					{team.map((member) => (
-						<TeamMemberCard {...member} />
-					))}
-				</div>
-			</CardContainer>
-		</div>
-	);
+	if (team.length !== 0) {
+		return (
+			<div>
+				<CardContainer>
+					<TeamCard />
+					<TeamOptionCard />
+					<TeamMemberCard />
+				</CardContainer>
+			</div>
+		);
+	} else {
+		return (
+			<div>
+				<TeamCreate />
+			</div>
+		);
+	}
 };
 
 export default TeamPage;

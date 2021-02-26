@@ -1,0 +1,37 @@
+.iconBtn {
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+}
+.teamOption {
+	display: flex;
+	padding-top: 100px;
+	align-content: center;
+	justify-content: center;
+}
+.optionDiv {
+	justify-content: center;
+	padding-left: 10px;
+	margin-left: 27px;
+	margin-right: 27px;
+}
+.option {
+	height: 120%;
+	width: fit-content;
+}
+.optionBtn {
+	outline: none;
+	border: none;
+	background-color: unset;
+}
+.deleteDiv {
+	background-color: rgb(248, 109, 109);
+	color: white;
+	border: 3px red solid;
+	border-radius: 15px;
+}
+#delete:active {
+	outline: none;
+	background-color: red;
+	border-radius: 15px;
+}
