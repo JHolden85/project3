@@ -6,6 +6,7 @@ export default function ParkPage(props) {
 
     const UploadPic = function(img) {
         console.log(img.target.value)
+        var StorePic = img.target.value
     }
 
     return <>
