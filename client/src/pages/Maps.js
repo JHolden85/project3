@@ -47,7 +47,7 @@ function Maps() {
 						: 'https://imgix.ranker.com/user_node_img/94/1872415/original/randall-park-people-in-tv-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces'; //replace '' with placeholder img url
 
 					return (
-						<div className="card col-3">
+						<div className="card col-3" key={park.place_id}>
 							<img alt="biteme" src={imgSrc} />
 							<div>Park Name: {park.name}</div>
 							<div>Park Address: {park.vicinity}</div>

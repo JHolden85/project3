@@ -22,15 +22,14 @@ const TeamMemberCard = () => {
 	};
 
 	const toggleCheckIn = (event) => {
-		const name = event.currentTarget;
-		console.log('const name', name);
-		console.log('toggleCheckIn hit');
-		console.log('', nameRef.current.value);
-		API.memberCheckIn({ username: 'Paco El Taco', teamId: team[0]._id })
-			.then((res) => {
-				console.log('sending new member: ', res);
-			})
+		const name = event.currentTarget.name;
+
+		console.log('name', name);
+		API.memberCheckIn({ username: name, teamId: team[0]._id })
+			.then((res) => {})
 			.catch((err) => console.log(err));
+
+		window.location.reload();
 	};
 
 	const checkInValidation = (team) => {
@@ -53,14 +52,16 @@ const TeamMemberCard = () => {
 			{team.length
 				? team[0].members?.map((member) => {
 						return (
-							<div id="MemberDiv">
+							<div name={member.name} id="MemberDiv" key={member._id}>
 								<button
 									id="MemberCard"
-									key={member._id}
+									name={member.name}
 									onClick={toggleCheckIn}
 								>
-									<h1 ref={nameRef}>{member.name}</h1>
-									<h3 id="h3">{member.checkedIn}</h3>
+									<h1 name={member.name}>{member.name}</h1>
+									<h3 name={member.name} id="h3">
+										{member.checkedIn}
+									</h3>
 								</button>
 							</div>
 						);

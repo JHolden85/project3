@@ -54,19 +54,32 @@ router.put('/team', async (req, res) => {
 });
 
 // Update Team Checked-In status
-router.put('/team/checkin', async (req, res) => {
+router.put('/team/checkin', async ({ body }, res) => {
 	//Updates a member's checked-in status
 
 	console.log('Backend hit');
-	console.log('backend received req', req.body);
-	// Finds User based off username
-	const member = await User.findOne({ username: req.body.name });
+	console.log('backend received req', body);
+
 	// Pushes user into Team member list
-	db.Team.findByIdAndUpdate({ username: req.body.teamId })
+	db.Team.findOne({ _id: body.teamId })
 		.then((teamDB) => {
-			res.json(teamDB);
+			teamDB.members.forEach((member, i) => {
+				if (member.name === body.username && member.checkedIn === false) {
+					teamDB.members[i].checkedIn = true;
+				} else if (member.name === body.username && member.checkedIn === true) {
+					teamDB.members[i].checkedIn = false;
+				}
+			});
+			// console.log('teamdb', teamDB);
+
+			teamDB.save().catch((err) => console.log(err));
+
+			res.status(200).json(teamDB);
 		})
-		.catch((err) => res.status(400).json(err));
+		.catch((err) => {
+			console.log(err);
+			res.status(400).json(err);
+		});
 });
 
 // Delete a Team
