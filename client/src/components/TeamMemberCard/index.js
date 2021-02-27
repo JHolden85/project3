@@ -1,25 +1,38 @@
 // TeamMemberCard.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import API from '../../utils/API';
 import './style.css';
 
 const TeamMemberCard = () => {
 	const [team, setTeam] = useState([]);
 
+	const nameRef = useRef();
+
 	useEffect(() => {
 		loadTeam();
 	}, []);
 
-	function loadTeam() {
+	const loadTeam = () => {
 		API.getTeam()
 			.then(({ data }) => {
 				setTeam(data);
 			})
 			.catch((err) => console.log(err));
-	}
+	};
 
-	function checkInValidation(team) {
+	const toggleCheckIn = (event) => {
+		const name = event.currentTarget.name;
+
+		console.log('name', name);
+		API.memberCheckIn({ username: name, teamId: team[0]._id })
+			.then((res) => {})
+			.catch((err) => console.log(err));
+
+		window.location.reload();
+	};
+
+	const checkInValidation = (team) => {
 		team.map((team) => {
 			for (let i = 0; i < team.members.length; i++) {
 				if (team.members[i].checkedIn === true) {
@@ -30,7 +43,7 @@ const TeamMemberCard = () => {
 			}
 			return team;
 		});
-	}
+	};
 
 	checkInValidation(team);
 
@@ -39,11 +52,17 @@ const TeamMemberCard = () => {
 			{team.length
 				? team[0].members?.map((member) => {
 						return (
-							<div id="MemberDiv">
-								<div id="MemberCard" key={member.id}>
-									<h1>{member.name}</h1>
-									<h3 id="h3">{member.checkedIn}</h3>
-								</div>
+							<div name={member.name} id="MemberDiv" key={member._id}>
+								<button
+									id="MemberCard"
+									name={member.name}
+									onClick={toggleCheckIn}
+								>
+									<h1 name={member.name}>{member.name}</h1>
+									<h3 name={member.name} id="h3">
+										{member.checkedIn}
+									</h3>
+								</button>
 							</div>
 						);
 				  })
