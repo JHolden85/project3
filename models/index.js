@@ -3,5 +3,6 @@ module.exports = {
 	loginData: require('./loginData'),
 	Amenities: require('./parkAmenities'),
 	Comments: require('./parkComment'),
-	Photos: require('./PostPics')
+	Photos: require('./PostPics'),
+	ProfilePhoto: require('./ProfilePics')
 };

@@ -7,12 +7,16 @@ const multer = require('multer');
 // mongoose.connect(‘url_here’);
 
 var photoSchema = new Schema({ 
-    img: { 
-       data: Buffer, 
-       contentType: String 
+    imgName: { 
+       type: String,
+       default: "none",
+       required: true
+    },
+    imgData:{
+        type: String,
+        required: true
     }
- }
-);
+});
 
 
 
