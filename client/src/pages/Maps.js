@@ -11,7 +11,6 @@ const googleApiKey = process.env.REACT_APP_googleApiKey;
 
 // Setting the developer state
 function Maps() {
-	console.log('api key', googleApiKey);
 	// ================= Hooks for setting data ==============
 	const [parks, setParks] = useState([]);
 

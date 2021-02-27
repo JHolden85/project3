@@ -62,18 +62,7 @@ router.put('/team/checkin', async (req, res) => {
 	// Finds User based off username
 	const member = await User.findOne({ username: req.body.name });
 	// Pushes user into Team member list
-	db.Team.findByIdAndUpdate(
-		{ username: req.body.teamId },
-		{
-			$push: {
-				members: {
-					id: member._id,
-					checkedIn: false,
-					name: member.name || member.username,
-				},
-			},
-		}
-	)
+	db.Team.findByIdAndUpdate({ username: req.body.teamId })
 		.then((teamDB) => {
 			res.json(teamDB);
 		})

@@ -22,11 +22,11 @@ const TeamMemberCard = () => {
 	};
 
 	const toggleCheckIn = (event) => {
-		const name = event.currentTarget.textContent;
-		console.log(name);
+		const name = event.currentTarget;
+		console.log('const name', name);
 		console.log('toggleCheckIn hit');
-		console.log(JSON.stringify(nameRef.current.value));
-		API.memberCheckIn({ username: nameRef.current.value, teamId: team[0]._id })
+		console.log('', nameRef.current.value);
+		API.memberCheckIn({ username: 'Paco El Taco', teamId: team[0]._id })
 			.then((res) => {
 				console.log('sending new member: ', res);
 			})
