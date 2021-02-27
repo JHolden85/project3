@@ -10,7 +10,7 @@ import Maps from "./pages/Maps";
 import FourOFour from "./pages/NotFound";
 import Auth from "./pages/LoginSignup";
 import TeamPage from "./pages/TeamPage";
-import SingleParkPage from "./pages/SingleParkPage";
+
 import API from "./utils/API";
 import HeaderNavBar from "./components/HeaderNavBar";
 import FooterNavBar from "./components/FooterNavBar";
@@ -40,7 +40,7 @@ function App() {
             path="/user/login"
             component={() => <Auth setUser={setUser} />}
           />
-          <Route exact path ="/singleparkpage" component={SingleParkPage} />
+          
           <Route exact path="/team" component={TeamPage} />
           <Route exact path="/photo" component={PhotoUpload} />
           <Route path="*" component={FourOFour} />

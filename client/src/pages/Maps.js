@@ -1,6 +1,10 @@
 import React, { Component, useState, useEffect } from "react";
 import { getGoogleMap } from "../utils/API";
 import API from "../utils/API";
+// import the "SingleParkPage" to send the data from the maps.js
+import SingleParkPage from "./SingleParkPage";
+// import the mapResultsPage as a component
+// import MapResults from "../components/mapResults";
 import { Link } from "react-router-dom";
 
 import Container from "../components/Container";
@@ -38,7 +42,7 @@ function Maps() {
 
   return (
     <Container style={{ minHeight: "80%" }}>
-      <h1 className="text-center">Parks In Your Area QQ</h1>
+      <h1 className="text-center">Parks In Your Area</h1>
 
       <div className="row">
         {parks.map((park) => {
@@ -48,10 +52,11 @@ function Maps() {
 
           return (
             <div className="card col-3">
-              <img alt="biteme" src={imgSrc} />
+              <img alt="Imagine A Happy Little Tree" src={imgSrc} />
               <div>Park Name: {park.name}</div>
               <div>Park Address: {park.vicinity}</div>
               <div>Is the Park Open?: {park.business_status}</div>
+              
             </div>
           );
         })}
