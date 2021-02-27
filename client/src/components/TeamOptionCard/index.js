@@ -85,7 +85,7 @@ const TeamOptionCard = ({ team }) => {
 				console.log('api hit');
 			})
 			.catch((err) => console.log(err));
-		// window.location.reload();
+		window.location.reload();
 	};
 
 	return (
@@ -123,10 +123,13 @@ const TeamOptionCard = ({ team }) => {
 				)}
 				{state.updateName && (
 					<div className="optionDiv">
-						<button className="optionBtn">
+						{/* <button className="optionBtn">
 							<img src={plusBtn} alt="*" className="iconBtn" id="update"></img>
-						</button>
-						<input className="option" placeholder="Enter new name here"></input>
+						</button> */}
+						{/* <input className="option" placeholder="Enter new name here"></input> */}
+						<h5>
+							This feature under development. Check back soon to see updates!
+						</h5>
 					</div>
 				)}
 				{state.delete && (

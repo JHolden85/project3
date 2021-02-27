@@ -12,13 +12,15 @@ const postTeam = (teamData) => axios.post('/api/user/team', teamData);
 const deleteTeam = (teamData) =>
 	axios.delete('/api/user/team', { data: { _id: teamData } });
 const updateMembers = (teamData) => axios.put('api/user/team', teamData);
+const memberCheckIn = (teamData) =>
+	axios.put('api/user/team/checkin', teamData);
 // ///////////////////////////////////////////////////////////////////////////////
 
 const getUser = () => axios.get('/api/user/current_user');
 const logout = () => axios.get('/api/user/logout');
 
 export const getGoogleMap = (data) => {
-	return axios.post("/api/google/search", data);
+	return axios.post('/api/google/search', data);
 };
 
 const API = {
@@ -29,6 +31,7 @@ const API = {
 	postTeam,
 	updateMembers,
 	deleteTeam,
+	memberCheckIn,
 	getUser,
 	logout,
 };

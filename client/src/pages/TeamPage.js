@@ -21,14 +21,13 @@ const TeamPage = () => {
 			.catch((err) => console.log(err));
 	}
 
-	console.log('team', team);
 	if (team.length !== 0) {
 		return (
 			<div>
 				<CardContainer>
 					<TeamCard />
 					<TeamOptionCard team={team} />
-					<TeamMemberCard />
+					<TeamMemberCard team={team} />
 				</CardContainer>
 			</div>
 		);
