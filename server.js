@@ -43,6 +43,9 @@ if (process.env.NODE_ENV === 'production') {
 // Add routes, both API and view
 app.use(routes);
 
+//connecting reference to upload folder for picture uploads
+app.use('/uploads', express.static('uploads'));
+
 //Using middleware Multer to upload photos to mongoDB
 // ::::::::::::::Waiting Chads review:::::::::::::::::::::::
 // app.use(multer({ dest: './uploads/',
