@@ -11,6 +11,7 @@ export default function Login({ setUser }) {
     API.signup(input)
       .then((data) => {
         setUser(data.data);
+        console.log(data.data)
         window.location.replace("/");
       })
       .catch((err) => console.log("signup went wrong, ", err));
