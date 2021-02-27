@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const amenitiesSchema = new Schema({
-    // parkName: {type: string},
+    // parkName: string,
 	tennis: { type: Boolean, default: false },
 	football: { type: Boolean, default: false },
 	soccer: { type: Boolean, default: false },
