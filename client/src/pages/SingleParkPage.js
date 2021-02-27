@@ -1,18 +1,26 @@
-import {useParams} from "react-router-dom";
-//import multer from
+
+
+import Container from "../components/Container"
 
 export default function ParkPage(props) {
-    const {place_id} = useParams()
 
+<<<<<<< HEAD
     const UploadPic = function(img) {
         console.log(img.target.value)
         var StorePic = img.target.value
     }
+=======
+>>>>>>> 2a43a777997d9c32a557a461f38906e86492b72c
 
-    return <>
-    <h1>{props.name}</h1>
+    return (
+    <Container style={{ minHeight: "80%" }}>
+        <h1 className="text-center">{props.name}</h1>
+        <div className="row">
+    <h1>{props.data}</h1>
     <img alt="biteme" src={props.imgSrc}/>
-    <h2>{place_id}</h2>
-    <input type="file" placeholder="Upload Photo" onChange = {UploadPic} ></input>
-    </>
+    </div>
+    </Container>
+    );
 }
+
+
