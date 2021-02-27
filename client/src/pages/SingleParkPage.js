@@ -5,12 +5,15 @@ import Container from "../components/Container"
 export default function ParkPage(props) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     const UploadPic = function(img) {
         console.log(img.target.value)
         var StorePic = img.target.value
     }
 =======
 >>>>>>> 2a43a777997d9c32a557a461f38906e86492b72c
+=======
+>>>>>>> main
 
     return (
     <Container style={{ minHeight: "80%" }}>
