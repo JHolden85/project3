@@ -4,15 +4,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const multer = require('multer');
 
-mongoose.connect("/");
+mongoose.connect('/');
 
-let profileSchema = new Schema(
-    {image: {
-        data: Buffer,
-        constentType: String
-    }
-}
-);
+let profileSchema = new Schema({
+	image: {
+		data: Buffer,
+		type: String,
+	},
+});
 
-const ProfilePhoto = mongoose.model('ProfilePhoto', profileSchema)
+const ProfilePhoto = mongoose.model('ProfilePhoto', profileSchema);
 module.exports = ProfilePhoto;
