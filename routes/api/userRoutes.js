@@ -53,6 +53,32 @@ router.put('/team', async (req, res) => {
 		.catch((err) => res.status(400).json(err));
 });
 
+router.put('/team/checkin', async (req, res) => {
+	//Updates a member's checked-in status
+
+	console.log('Backend hit');
+	console.log('backend received req', req.body);
+	// Finds User based off username
+	// const member = await User.findOne({ username: req.body.memberId });
+	// // Pushes user into Team member list
+	// db.Team.updateOne(
+	// 	{ username: req.body.teamId },
+	// 	{
+	// 		$push: {
+	// 			members: {
+	// 				id: member._id,
+	// 				checkedIn: false,
+	// 				name: member.name || member.username,
+	// 			},
+	// 		},
+	// 	}
+	// )
+	// 	.then((teamDB) => {
+	// 		res.json(teamDB);
+	// 	})
+	// 	.catch((err) => res.status(400).json(err));
+});
+
 // Delete a Team
 router.delete('/team', async (req, res) => {
 	console.log('router side', req);
@@ -130,7 +156,7 @@ router.get('/logout', (req, res) => {
 	});
 });
 
-// // router to post pictures 
+// // router to post pictures
 // router.post("/user")
 
 module.exports = router;
