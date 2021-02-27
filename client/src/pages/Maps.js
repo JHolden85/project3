@@ -53,7 +53,7 @@ function Maps() {
               <div>Park Address: {park.vicinity}</div>
               <div>Is the Park Open?: {park.business_status}</div>
               {/* <div>Park Id:</div> */}
-              
+              <button onClick={API.getGoogleMap} type="button"></button>
             </div>
           );
         })}

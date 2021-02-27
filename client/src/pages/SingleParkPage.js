@@ -8,7 +8,7 @@ export default function ParkPage(props) {
     <Container style={{ minHeight: "80%" }}>
         <h1 className="text-center">{props.name}</h1>
         <div className="row">
-    <h1>{props.name}</h1>
+    <h1>{props.data}</h1>
     <img alt="biteme" src={props.imgSrc}/>
     <h2>{place_id}</h2>
     </div>
