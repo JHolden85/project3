@@ -13,6 +13,7 @@ const amenitiesSchema = new Schema({
     skatepark: { type: Boolean, default: false },
     playground: { type: Boolean, default: false },
     pool: { type: Boolean, default: false },
+    place_id: { type: String }
 });
 
 const Amenities = mongoose.model('Amenities', amenitiesSchema);

@@ -20,10 +20,6 @@ function Maps() {
 
   //Call to retreive the API data, and then load into the setParks function
   useEffect(() => {
-  //   router.post("")
-  // getGoogleMap("33.771713,-118.18131", 10000, "park").then(({ data }) => {
-  //   console.log(data.results);
-  //   setParks(data.results);
   API.getGoogleMap({
     location: "33.771713,-118.18131",
     radius: 10000,
@@ -51,11 +47,12 @@ function Maps() {
             : "https://imgix.ranker.com/user_node_img/94/1872415/original/randall-park-people-in-tv-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces"; //replace '' with placeholder img url
 
           return (
-            <div className="card col-3">
+            <div className="card col-3 ourParkCards" key={park.place_id}>
               <img alt="Imagine A Happy Little Tree" src={imgSrc} />
               <div>Park Name: {park.name}</div>
               <div>Park Address: {park.vicinity}</div>
               <div>Is the Park Open?: {park.business_status}</div>
+              {/* <div>Park Id:</div> */}
               
             </div>
           );
