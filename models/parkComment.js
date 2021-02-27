@@ -5,6 +5,11 @@ const commentsSchema = new Schema({
     day: {
         type: Date,
         default: Date.now()
+    },
+    placeID:{
+        type:String,
+        unique: true,
+        default:false
     },    
     comment: {
         type: String,
