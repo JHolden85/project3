@@ -6,8 +6,7 @@ import './style.css';
 
 const TeamMemberCard = () => {
 	const [team, setTeam] = useState([]);
-
-	const nameRef = useRef();
+	const [user, setUser] = useState(null);
 
 	useEffect(() => {
 		loadTeam();
@@ -19,6 +18,10 @@ const TeamMemberCard = () => {
 				setTeam(data);
 			})
 			.catch((err) => console.log(err));
+		API.getUser().then(({ data }) => {
+			console.log(data);
+			setUser(data);
+		});
 	};
 
 	const toggleCheckIn = (event) => {
@@ -46,6 +49,8 @@ const TeamMemberCard = () => {
 	};
 
 	checkInValidation(team);
+
+	console.log('user info: ', user);
 
 	return (
 		<div>

@@ -7,11 +7,18 @@ const db = require('../../models');
 // ///////////////////////////////////////////
 
 // Get current Team
-router.get('/team', (req, res) => {
+router.get('/team', async (req, res) => {
 	// Gets all Team data
-	db.Team.find({})
+	const user = await User.find({ _id: req.session.user_id });
+
+	// console.log('USER INFO', user);
+
+	// console.log('USER TEAMS', user[0].teams);
+	// console.log('USER ID', user[0]._id);
+
+	db.Team.find({ _id: { $in: user[0].teams } })
 		.then((teamDB) => {
-			console.log(teamDB);
+			console.log('found teams: ', teamDB);
 			res.json(teamDB);
 		})
 		.catch((err) => res.status(400).json(err));
@@ -25,7 +32,25 @@ router.post('/team', (req, res) => {
 		members: [{ id: req.session.user_id, name: req.session.username }],
 	})
 		.then((teamDB) => {
-			console.log(teamDB);
+			console.log('new posted team', teamDB._id);
+
+			User.findByIdAndUpdate(
+				{ _id: req.session.user_id },
+				{
+					$push: {
+						teams: [teamDB._id],
+					},
+				}
+			)
+				.then((user) => {
+					console.log('updated user after posting team', user);
+					req.session.teams = user.teams;
+
+					console.log('updated session with new team array', req.session);
+					res.json(user);
+				})
+				.catch((err) => console.log(err));
+
 			res.json(teamDB);
 		})
 		.catch((err) => res.status(400).json(err));
@@ -51,14 +76,22 @@ router.put('/team', async (req, res) => {
 			res.json(teamDB);
 		})
 		.catch((err) => res.status(400).json(err));
+
+	User.findByIdAndUpdate(member._id, {
+		$push: {
+			teams: req.body.teamId,
+		},
+	})
+		.then((data) => {
+			console.log('update users team array', data);
+			res.json(data);
+		})
+		.catch((err) => console.log(err));
 });
 
 // Update Team Checked-In status
 router.put('/team/checkin', async ({ body }, res) => {
 	//Updates a member's checked-in status
-
-	console.log('Backend hit');
-	console.log('backend received req', body);
 
 	// Pushes user into Team member list
 	db.Team.findOne({ _id: body.teamId })
@@ -105,6 +138,7 @@ router.post('/signup', (req, res) => {
 		req.session.username = user.username;
 		req.session.user_id = user._id;
 		req.session.logged_in = true;
+		req.session.teams = [];
 		req.session.save((err) => {
 			console.log(err);
 		});
