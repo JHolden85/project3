@@ -11,11 +11,6 @@ router.get('/team', async (req, res) => {
 	// Gets all Team data
 	const user = await User.find({ _id: req.session.user_id });
 
-	// console.log('USER INFO', user);
-
-	// console.log('USER TEAMS', user[0].teams);
-	// console.log('USER ID', user[0]._id);
-
 	db.Team.find({ _id: { $in: user[0].teams } })
 		.then((teamDB) => {
 			console.log('found teams: ', teamDB);
@@ -103,7 +98,6 @@ router.put('/team/checkin', async ({ body }, res) => {
 					teamDB.members[i].checkedIn = false;
 				}
 			});
-			// console.log('teamdb', teamDB);
 
 			teamDB.save().catch((err) => console.log(err));
 
