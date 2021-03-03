@@ -19,7 +19,6 @@ const TeamMemberCard = () => {
 			})
 			.catch((err) => console.log(err));
 		API.getUser().then(({ data }) => {
-			console.log(data);
 			setUser(data);
 		});
 	};
@@ -27,7 +26,6 @@ const TeamMemberCard = () => {
 	const toggleCheckIn = (event) => {
 		const name = event.currentTarget.name;
 
-		console.log('name', name);
 		if (name === user.username) {
 			API.memberCheckIn({ username: name, teamId: team[0]._id })
 				.then((res) => {})
@@ -53,8 +51,6 @@ const TeamMemberCard = () => {
 	};
 
 	checkInValidation(team);
-
-	console.log('TeamMemberCard user info: ', user);
 
 	return (
 		<div>
