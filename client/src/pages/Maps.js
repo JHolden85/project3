@@ -7,7 +7,7 @@ import SingleParkPage from "./SingleParkPage";
 // import MapResults from "../components/mapResults";
 import { useHistory } from "react-router-dom";
 
-import Container from "../components/Container";
+import Container from '../components/Container';
 // import router from '../../../routes/api/userRoutes';
 
 const googleApiKey = process.env.REACT_APP_googleApiKey;
