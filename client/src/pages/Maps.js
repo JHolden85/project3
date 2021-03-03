@@ -53,7 +53,7 @@ function Maps({setPark}) {
 
           return (
             // <div className="card col-4 ourParkCards square border border-success" onClick={() => handleSinglePark(park)} key={park.place_id}>
-              <MDBCard alignment='center' style={{ maxWidth: '22rem' }}>
+              <MDBCard alignment='center' style={{ maxWidth: '20em' }}>
               {/* <img className="cardImg" alt="Imagine A Happy Little Tree" src={imgSrc} /> */}
               <MDBCardHeader>{park.name}</MDBCardHeader>
               <MDBCardImage src={imgSrc} position='top' alt="Park image here"/>
