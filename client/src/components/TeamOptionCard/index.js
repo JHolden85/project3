@@ -137,12 +137,7 @@ const TeamOptionCard = ({ team }) => {
 						<h3 className="option">Click to confirm delete</h3>
 						<br></br>
 						<button className="optionBtn" id="delete" onClick={handleDelete}>
-							<img
-								src={deleteBtn}
-								alt="*"
-								className="iconBtn"
-								id="update"
-							></img>
+							<img src={deleteBtn} alt="*" className="iconBtn"></img>
 						</button>
 					</div>
 				)}

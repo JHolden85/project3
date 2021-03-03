@@ -3,22 +3,17 @@ const User = require('../../models/loginData');
 const db = require('../../models');
 //const { default: MapResults } = require('../../client/src/components/mapResults');
 
+// ////////////////////////////////////////////////////////////////////////
 // Team Routes - CP
-// ///////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////
 
 // Get current Team
 router.get('/team', async (req, res) => {
 	// Gets all Team data
 	const user = await User.find({ _id: req.session.user_id });
 
-	// console.log('USER INFO', user);
-
-	// console.log('USER TEAMS', user[0].teams);
-	// console.log('USER ID', user[0]._id);
-
 	db.Team.find({ _id: { $in: user[0].teams } })
 		.then((teamDB) => {
-			console.log('found teams: ', teamDB);
 			res.json(teamDB);
 		})
 		.catch((err) => res.status(400).json(err));
@@ -43,10 +38,8 @@ router.post('/team', (req, res) => {
 				}
 			)
 				.then((user) => {
-					console.log('updated user after posting team', user);
 					req.session.teams = user.teams;
 
-					console.log('updated session with new team array', req.session);
 					res.json(user);
 				})
 				.catch((err) => console.log(err));
@@ -103,7 +96,6 @@ router.put('/team/checkin', async ({ body }, res) => {
 					teamDB.members[i].checkedIn = false;
 				}
 			});
-			// console.log('teamdb', teamDB);
 
 			teamDB.save().catch((err) => console.log(err));
 
@@ -129,7 +121,12 @@ router.delete('/team', async (req, res) => {
 		})
 		.catch((err) => res.status(400).json(err));
 });
-// ///////////////////////////////////////////
+
+// //////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////
+
+// SIGN UP ROUTES
+// ////////////////////////////////////////////////////////////////////////////
 
 router.post('/signup', (req, res) => {
 	//sign up the user
@@ -170,6 +167,7 @@ router.post('/login', (req, res) => {
 		})
 		.catch((err) => console.log(err));
 });
+// ////////////////////////////////////////////////////////////////////////////
 
 //put our env var on our server, and rename that key to the env later on
 router.get('/getkey', (req, res) => {
