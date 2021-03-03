@@ -1,6 +1,6 @@
 // TeamMemberCard.js
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import API from '../../utils/API';
 import './style.css';
 
@@ -28,11 +28,15 @@ const TeamMemberCard = () => {
 		const name = event.currentTarget.name;
 
 		console.log('name', name);
-		API.memberCheckIn({ username: name, teamId: team[0]._id })
-			.then((res) => {})
-			.catch((err) => console.log(err));
+		if (name === user.username) {
+			API.memberCheckIn({ username: name, teamId: team[0]._id })
+				.then((res) => {})
+				.catch((err) => console.log(err));
 
-		window.location.reload();
+			window.location.reload();
+		} else {
+			return;
+		}
 	};
 
 	const checkInValidation = (team) => {
@@ -50,7 +54,7 @@ const TeamMemberCard = () => {
 
 	checkInValidation(team);
 
-	console.log('user info: ', user);
+	console.log('TeamMemberCard user info: ', user);
 
 	return (
 		<div>
