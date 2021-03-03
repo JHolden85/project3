@@ -45,15 +45,15 @@ function Maps({setPark}) {
     <Container style={{ minHeight: "80%" }}>
       <h1 className="text-center">Parks In Your Area</h1>
 
-      <div className="row">
+      <div className="row-3 justify-content-center">
         {parks.map((park) => {
           const imgSrc = park.photos
             ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${park.photos[0].photo_reference}&key=${googleApiKey}`
             : "https://imgix.ranker.com/user_node_img/94/1872415/original/randall-park-people-in-tv-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces"; //replace '' with placeholder img url
 
           return (
-            <div className="card col-3 ourParkCards" onClick={() => handleSinglePark(park)} key={park.place_id}>
-              <img alt="Imagine A Happy Little Tree" src={imgSrc} />
+            <div className="card col-4 ourParkCards" onClick={() => handleSinglePark(park)} key={park.place_id}>
+              <img className="cardImg" alt="Imagine A Happy Little Tree" src={imgSrc} />
               <div>Park Name: {park.name}</div>
               <div>Park Address: {park.vicinity}</div>
               <div>Is the Park Open?: {park.business_status}</div>

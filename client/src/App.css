@@ -44,9 +44,12 @@
   order: 5;
 }
 .card {
+  display: inline;
   margin: 0.5rem;
   width: 100%;
   height: 100%;
 }
-.btn {
+.cardImg {
+  width: auto;
+  height: 7.5em;
 }
