@@ -1,8 +1,8 @@
 import React, { Component, useState, useEffect } from "react";
-import { getGoogleMap } from "../utils/API";
+import MDBCardImage from 'mdb-react-ui-kit';
 import API from "../utils/API";
 // import the "SingleParkPage" to send the data from the maps.js
-import SingleParkPage from "./SingleParkPage";
+
 // import the mapResultsPage as a component
 // import MapResults from "../components/mapResults";
 import { useHistory } from "react-router-dom";
@@ -52,11 +52,12 @@ function Maps({setPark}) {
             : "https://imgix.ranker.com/user_node_img/94/1872415/original/randall-park-people-in-tv-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces"; //replace '' with placeholder img url
 
           return (
-            <div className="card col-4 ourParkCards" onClick={() => handleSinglePark(park)} key={park.place_id}>
-              <img className="cardImg" alt="Imagine A Happy Little Tree" src={imgSrc} />
-              <div>Park Name: {park.name}</div>
-              <div>Park Address: {park.vicinity}</div>
-              <div>Is the Park Open?: {park.business_status}</div>
+            <div className="card col-4 ourParkCards square border border-success" onClick={() => handleSinglePark(park)} key={park.place_id}>
+              {/* <img className="cardImg" alt="Imagine A Happy Little Tree" src={imgSrc} /> */}
+              <MDBCardImage src={imgSrc} />
+              <div className="text-center">Park Name: {park.name}</div>
+              <div className="text-center">Park Address: {park.vicinity}</div>
+              <div className="text-center">Is the Park Open?: {park.business_status}</div>
               {/* <div>Park Id:</div> */}
               {/* <button onClick={API.getGoogleMap} type="button"></button> */}
             </div>
