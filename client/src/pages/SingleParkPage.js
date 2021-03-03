@@ -10,7 +10,7 @@ export default function ParkPage(props) {
     <Container style={{ minHeight: "80%" }}>
         <h1 className="text-center">{props.name}</h1>
         <div className="row">
-        <img alt="Bite-Me" src=""/>
+        <img alt="Bite-Me" src={props.icon}/>
     <h2 className="text-center">{props.vicinity}:{props.business_status}</h2>
     <div className="row">
 
