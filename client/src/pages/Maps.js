@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
-import MDBCardImage from 'mdb-react-ui-kit';
+import { MDBCard, MDBCardBody, MDBCardHeader, MDBCardTitle, MDBCardText, MDBCardImage, MDBBtn } from 'mdb-react-ui-kit';
 import API from "../utils/API";
 // import the "SingleParkPage" to send the data from the maps.js
 
@@ -52,15 +52,21 @@ function Maps({setPark}) {
             : "https://imgix.ranker.com/user_node_img/94/1872415/original/randall-park-people-in-tv-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces"; //replace '' with placeholder img url
 
           return (
-            <div className="card col-4 ourParkCards square border border-success" onClick={() => handleSinglePark(park)} key={park.place_id}>
+            // <div className="card col-4 ourParkCards square border border-success" onClick={() => handleSinglePark(park)} key={park.place_id}>
+              <MDBCard alignment='center' style={{ maxWidth: '22rem' }}>
               {/* <img className="cardImg" alt="Imagine A Happy Little Tree" src={imgSrc} /> */}
-              <MDBCardImage src={imgSrc} />
-              <div className="text-center">Park Name: {park.name}</div>
-              <div className="text-center">Park Address: {park.vicinity}</div>
-              <div className="text-center">Is the Park Open?: {park.business_status}</div>
+              <MDBCardHeader>{park.name}</MDBCardHeader>
+              <MDBCardImage src={imgSrc} position='top' alt="Park image here"/>
+              {/* <div className="text-center">Park Name: {park.name}</div> */}
+              <MDBCardText>Park Address: {park.vicinity}</MDBCardText>              
+              {/* <div className="text-center">Park Address: {park.vicinity}</div> */}
+              <MDBCardTitle>The Park is: {park.business_status}</MDBCardTitle>
+              {/* <div className="text-center">Is the Park Open?: {park.business_status}</div> */}
+              <MDBBtn onClick={() => handleSinglePark(park)} key={park.place_id}>Click Here To Discover More!</MDBBtn>
               {/* <div>Park Id:</div> */}
               {/* <button onClick={API.getGoogleMap} type="button"></button> */}
-            </div>
+            {/* </div> */}
+            </MDBCard>
           );
         })}
       </div>
