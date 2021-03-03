@@ -3,17 +3,12 @@
 import Container from "../components/Container"
 
 export default function ParkPage(props) {
-
-<<<<<<< HEAD
-<<<<<<< HEAD
+    
     const UploadPic = function(img) {
+        ////const {place_id} = useParams()
         console.log(img.target.value)
         var StorePic = img.target.value
     }
-=======
->>>>>>> 2a43a777997d9c32a557a461f38906e86492b72c
-=======
->>>>>>> main
 
     return (
     <Container style={{ minHeight: "80%" }}>
@@ -21,9 +16,9 @@ export default function ParkPage(props) {
         <div className="row">
     <h1>{props.data}</h1>
     <img alt="biteme" src={props.imgSrc}/>
+<input type="file" placeholder="Upload Photo" onChange = {UploadPic} ></input>
     </div>
     </Container>
     );
 }
-
 
