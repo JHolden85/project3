@@ -8,6 +8,8 @@ import {
   MDBCardText,
   MDBCardImage,
   MDBBtn,
+  MDBRow,
+  MDBCol,
 } from "mdb-react-ui-kit";
 import API from "../utils/API";
 // import the "SingleParkPage" to send the data from the maps.js
@@ -52,41 +54,45 @@ function Maps({ setPark }) {
 
   return (
     <Container style={{ minHeight: "80%" }}>
-      <h1 className="text-center">Parks In Your Area</h1>
+      <h1 className="text-center">Parks in your Area</h1>
+      <MDBRow className="row-cols-1 row-cols-md-2 g-4">
+        
+          {parks.map((park) => {
+            const imgSrc = park.photos
+              ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${park.photos[0].photo_reference}&key=${googleApiKey}`
+              : "https://imgix.ranker.com/user_node_img/94/1872415/original/randall-park-people-in-tv-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces"; //replace '' with placeholder img url
 
-      <div className="row-3 justify-content-center">
-        {parks.map((park) => {
-          const imgSrc = park.photos
-            ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${park.photos[0].photo_reference}&key=${googleApiKey}`
-            : "https://imgix.ranker.com/user_node_img/94/1872415/original/randall-park-people-in-tv-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces"; //replace '' with placeholder img url
+            return (
+              <MDBCol>
+              <MDBCard alignment="center" style={{ maxWidth: "20em" }}>
+                <MDBCardBody>
+                  <MDBCardTitle>{park.name}</MDBCardTitle>
+                  <MDBCardImage
+                    src={imgSrc}
+                    position="top"
+                    alt="Park image here"
+                  />
 
-          return (
-            <MDBCard alignment="center" style={{ maxWidth: "20em" }}>
-              
-              <MDBCardBody>
-                <MDBCardTitle>{park.name}</MDBCardTitle>
-                <MDBCardImage
-                  src={imgSrc}
-                  position="top"
-                  alt="Park image here"
-                />
+                  <MDBCardText>Park Address: {park.vicinity}</MDBCardText>
+
+                  <MDBCardTitle>
+                    The Park is: {park.business_status}
+                  </MDBCardTitle>
+
+                  <MDBBtn
+                    onClick={() => handleSinglePark(park)}
+                    key={park.place_id}
+                  >
+                    Click Here To Discover More!
+                  </MDBBtn>
+                </MDBCardBody>
                 
-                <MDBCardText>Park Address: {park.vicinity}</MDBCardText>
-                
-                <MDBCardTitle>The Park is: {park.business_status}</MDBCardTitle>
-                
-                <MDBBtn
-                  onClick={() => handleSinglePark(park)}
-                  key={park.place_id}
-                >
-                  Click Here To Discover More!
-                </MDBBtn>
-               
-              </MDBCardBody>
-            </MDBCard>
-          );
-        })}
-      </div>
+              </MDBCard>
+              </MDBCol>
+            );
+          })}
+        
+      </MDBRow>
     </Container>
   );
 }
