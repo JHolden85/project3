@@ -1,6 +1,7 @@
 // TeamMemberCard.js
 
 import React, { useState, useEffect } from 'react';
+import { io } from 'socket.io-client';
 import API from '../../utils/API';
 import './style.css';
 
@@ -23,6 +24,12 @@ const TeamMemberCard = () => {
 		});
 	};
 
+	// Setting Socket IO info
+	const socket = io();
+
+	// Toggles the user's check in status between true or false
+	// //////////////////////////////////////////////////////////////////////
+
 	const toggleCheckIn = (event) => {
 		const name = event.currentTarget.name;
 
@@ -31,11 +38,17 @@ const TeamMemberCard = () => {
 				.then((res) => {})
 				.catch((err) => console.log(err));
 
+			socket.emit('check-in', 'Freedom! Freedom! Freedom! Oy!');
+
 			window.location.reload();
 		} else {
 			return;
 		}
 	};
+
+	// This function converts the users check-in status from
+	//  boolean into user friendly text content
+	// //////////////////////////////////////////////////////////////////////
 
 	const checkInValidation = (team) => {
 		team.map((team) => {
@@ -59,6 +72,7 @@ const TeamMemberCard = () => {
 						return (
 							<div name={member.name} id="MemberDiv" key={member._id}>
 								<button
+									className="button"
 									id="MemberCard"
 									name={member.name}
 									onClick={toggleCheckIn}

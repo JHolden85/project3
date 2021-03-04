@@ -4,7 +4,13 @@ const mongoose = require('mongoose');
 const routes = require('./routes');
 const app = express();
 const MongoStore = require('connect-mongo')(session);
-const multer = require("multer");
+const io = require('socket.io')(3003, {
+	cors: {
+		origin: PORT,
+		methods: ['GET', 'POST'],
+	},
+});
+const multer = require('multer');
 
 const PORT = process.env.PORT || 3001;
 require('dotenv').config();
@@ -30,6 +36,19 @@ app.use(
 		store: new MongoStore({ mongooseConnection: mongoose.connection }),
 	})
 );
+// ///////////////////////////////////////////////////////////////////////
+
+// Socket IO connections - CP
+// ///////////////////////////////////////////////////////////////////////
+
+io.on('connection', (socket) => {
+	socket.emit(
+		'welcome',
+		'Socket IO listening :) tell Socket IO about your day?'
+	);
+	socket.on('check-in', (status) => console.log('Status received', status));
+});
+
 // ///////////////////////////////////////////////////////////////////////
 
 // Define middleware here
