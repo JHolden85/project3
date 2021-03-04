@@ -34,7 +34,6 @@ const TeamCreate = () => {
 				className="newTeamInput"
 				id="teamName"
 				ref={nameInput}
-				// onSubmit={getData}
 			></input>
 			<br></br>
 			<input
@@ -42,7 +41,6 @@ const TeamCreate = () => {
 				className="newTeamInput"
 				id="teamSport"
 				ref={sportInput}
-				// onSubmit={getData}
 			></input>
 			<br></br>
 			<button
