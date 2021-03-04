@@ -10,6 +10,7 @@ import {
   MDBBtn,
   MDBRow,
   MDBCol,
+  MDBCardFooter
 } from "mdb-react-ui-kit";
 import API from "../utils/API";
 // import the "SingleParkPage" to send the data from the maps.js
@@ -75,9 +76,9 @@ function Maps({ setPark }) {
 
                   <MDBCardText>Park Address: {park.vicinity}</MDBCardText>
 
-                  <MDBCardTitle>
-                    The Park is: {park.business_status}
-                  </MDBCardTitle>
+                  {/* <MDBCardTitle>
+                    The Park is: 
+                  </MDBCardTitle> */}
 
                   <MDBBtn
                     onClick={() => handleSinglePark(park)}
@@ -86,7 +87,9 @@ function Maps({ setPark }) {
                     Click Here To Discover More!
                   </MDBBtn>
                 </MDBCardBody>
-                
+                <MDBCardFooter>
+                  <small className='text-muted'>{park.business_status}</small>
+                </MDBCardFooter>
               </MDBCard>
               </MDBCol>
             );
