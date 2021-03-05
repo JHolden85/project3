@@ -1,7 +1,8 @@
 #MemberCard {
+	display: block;
 	text-shadow: 1px 1px rgb(0, 0, 0);
 	padding: 1rem;
-	margin: 0px 0px 20px 50px;
+	margin: 0px auto 20px auto;
 	max-width: 275px;
 	min-width: 275px;
 	background-color: rgb(79, 168, 79);

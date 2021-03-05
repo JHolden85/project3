@@ -116,7 +116,7 @@ const TeamOptionCard = ({ team }) => {
 						<input
 							ref={inputRef}
 							className="option"
-							placeholder="Search by username here"
+							placeholder="Add by username here"
 							id="user"
 						></input>
 					</div>
