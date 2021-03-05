@@ -3,7 +3,7 @@ const db = require('../models');
 
 // This file empties the Books collection and inserts the books below
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Parcs');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://MongoDBUser:MongoDBpw@cluster0.2t8fm.mongodb.net/Parcs?retryWrites=true&w=majority');
 
 const teamSeed = [
 	{
