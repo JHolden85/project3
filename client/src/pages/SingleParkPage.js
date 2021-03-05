@@ -1,6 +1,5 @@
 import Container from '../components/Container';
 
-
 const style = {
 	parentDiv: {
 		marginBottom: '60px',
@@ -17,7 +16,6 @@ const style = {
 		marginLeft: 'auto',
 		marginRight: 'auto',
 		width: '80%',
-		border: '1.5px solid darkgreen',
 		borderRadius: '15px',
 	},
 	a: {
@@ -29,6 +27,8 @@ export default function ParkPage(props) {
 	const googleApiKey = process.env.REACT_APP_googleApiKey;
 
 	const imgSrc = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=350&photoreference=${props.photos[0].photo_reference}&key=${googleApiKey}`;
+
+	console.log(props);
 
 	return (
 		<Container style={{ minHeight: '80%' }}>

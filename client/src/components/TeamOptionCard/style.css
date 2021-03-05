@@ -1,19 +1,33 @@
+/* Options */
+.TeamOptions {
+	flex-direction: row;
+	background-color: green;
+	margin: 0px 35px;
+	padding: 15px 0px;
+}
+.TeamBtn {
+	padding: 0.8rem;
+	background-color: rgb(30, 116, 35);
+	color: white;
+	border: darkgreen 2px solid;
+	border-radius: 20px;
+	width: 5.2rem;
+	outline: none;
+}
+#deleteBtn {
+	background-color: rgb(212, 65, 65);
+}
+
+/* Options Pop-Down */
 .iconBtn {
 	width: 50px;
 	height: 50px;
 	margin-right: 10px;
 }
-.teamOption {
-	display: flex;
-	padding-top: 100px;
-	align-content: center;
-	justify-content: center;
-}
 .optionDiv {
-	justify-content: center;
-	padding-left: 10px;
-	margin-left: 27px;
-	margin-right: 27px;
+	display: block;
+	width: 80%;
+	margin: auto;
 	margin-bottom: 20px;
 }
 .option {
@@ -25,6 +39,7 @@
 	border: none;
 	background-color: unset;
 }
+
 .deleteDiv {
 	display: flex;
 	flex-direction: column;
