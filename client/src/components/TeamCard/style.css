@@ -6,39 +6,12 @@
 }
 
 .TeamCard {
-	align-content: center;
+	display: block;
+	text-align: center;
 	background-color: darkgreen;
-	margin: 0px 20px;
-	margin-top: 20px;
+	margin: 10px 20px 00px 20px;
 	padding: 10px;
 	border-radius: 20px;
 	color: white;
 	word-wrap: break-word;
-}
-
-#teamname {
-	margin-left: auto;
-	margin-right: auto;
-}
-#teamsport {
-	margin-left: auto;
-	margin-right: auto;
-}
-.TeamOptions {
-	flex-direction: row;
-	background-color: green;
-	margin: 0px 35px;
-	padding: 15px 0px;
-}
-.TeamBtn {
-	padding: 0.8rem;
-	background-color: rgb(30, 116, 35);
-	color: white;
-	border: darkgreen 2px solid;
-	border-radius: 20px;
-	width: 5.2rem;
-	outline: none;
-}
-#deleteBtn {
-	background-color: rgb(212, 65, 65);
 }
