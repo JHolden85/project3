@@ -1,5 +1,6 @@
 import Container from '../components/Container';
 
+
 const style = {
 	parentDiv: {
 		marginBottom: '60px',
