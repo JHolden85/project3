@@ -29,6 +29,8 @@ export default function ParkPage(props) {
 
 	const imgSrc = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=350&photoreference=${props.photos[0].photo_reference}&key=${googleApiKey}`;
 
+	console.log(props);
+
 	return (
 		<Container style={{ minHeight: '80%' }}>
 			<div style={style.parentDiv}>

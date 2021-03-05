@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import API from '../utils/API';
-import CardContainer from '../components/CardContainer';
 import TeamCard from '../components/TeamCard';
 import TeamMemberCard from '../components/TeamMemberCard';
 import TeamOptionCard from '../components/TeamOptionCard';
 import TeamCreate from '../components/TeamCreate';
+import TeamContainer from '../components/TeamContainer';
 
 const TeamPage = () => {
 	const [team, setTeam] = useState({});
@@ -24,11 +24,11 @@ const TeamPage = () => {
 	if (team.length !== 0) {
 		return (
 			<div>
-				<CardContainer>
+				<TeamContainer>
 					<TeamCard />
 					<TeamOptionCard team={team} />
 					<TeamMemberCard team={team} />
-				</CardContainer>
+				</TeamContainer>
 			</div>
 		);
 	} else {
