@@ -10,9 +10,10 @@
 	color: white;
 }
 .footerBtn {
-	padding: 0.8rem;
+	padding: 0.8rem 0.5rem 0.8rem 0.5rem;
 	background-color: rgb(30, 116, 35);
 	color: white;
 	border: darkgreen 1px solid;
 	border-radius: 20px;
+	text-align: center;
 }

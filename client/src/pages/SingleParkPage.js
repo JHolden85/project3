@@ -1,6 +1,5 @@
 import Container from '../components/Container';
 
-
 const style = {
 	parentDiv: {
 		marginBottom: '60px',
@@ -17,7 +16,6 @@ const style = {
 		marginLeft: 'auto',
 		marginRight: 'auto',
 		width: '80%',
-		border: '1.5px solid darkgreen',
 		borderRadius: '15px',
 	},
 	a: {
