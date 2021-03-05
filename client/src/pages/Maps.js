@@ -54,7 +54,7 @@ function Maps({ setPark }) {
   };
 
   return (
-    <Container style={{ minHeight: "80%" }}>
+    <Container style={{ minHeight: "80%" }} id="mapsCardContainer">
       <h1 className="text-center">Parks in your Area</h1>
       <MDBRow className="row-cols-1 row-cols-md-2 g-4">
         
