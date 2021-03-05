@@ -14,6 +14,7 @@ import {
 } from "mdb-react-ui-kit";
 import API from "../utils/API";
 // import the "SingleParkPage" to send the data from the maps.js
+// Modifying for Heroku commit
 
 // import the mapResultsPage as a component
 // import MapResults from "../components/mapResults";
