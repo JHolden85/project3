@@ -17,7 +17,7 @@ import API from "../utils/API";
 
 // import the mapResultsPage as a component
 // import MapResults from "../components/mapResults";
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 import Container from "../components/Container";
 // import router from '../../../routes/api/userRoutes';

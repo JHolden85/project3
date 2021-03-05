@@ -3,15 +3,17 @@ const User = require('../../models/loginData');
 const db = require('../../models');
 //const { default: MapResults } = require('../../client/src/components/mapResults');
 
+// ////////////////////////////////////////////////////////////////////////
 // Team Routes - CP
-// ///////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////
 
 // Get current Team
-router.get('/team', (req, res) => {
+router.get('/team', async (req, res) => {
 	// Gets all Team data
-	db.Team.find({})
+	const user = await User.find({ _id: req.session.user_id });
+
+	db.Team.find({ _id: { $in: user[0].teams } })
 		.then((teamDB) => {
-			console.log(teamDB);
 			res.json(teamDB);
 		})
 		.catch((err) => res.status(400).json(err));
@@ -25,7 +27,23 @@ router.post('/team', (req, res) => {
 		members: [{ id: req.session.user_id, name: req.session.username }],
 	})
 		.then((teamDB) => {
-			console.log(teamDB);
+			console.log('new posted team', teamDB._id);
+
+			User.findByIdAndUpdate(
+				{ _id: req.session.user_id },
+				{
+					$push: {
+						teams: [teamDB._id],
+					},
+				}
+			)
+				.then((user) => {
+					req.session.teams = user.teams;
+
+					res.json(user);
+				})
+				.catch((err) => console.log(err));
+
 			res.json(teamDB);
 		})
 		.catch((err) => res.status(400).json(err));
@@ -51,14 +69,22 @@ router.put('/team', async (req, res) => {
 			res.json(teamDB);
 		})
 		.catch((err) => res.status(400).json(err));
+
+	User.findByIdAndUpdate(member._id, {
+		$push: {
+			teams: req.body.teamId,
+		},
+	})
+		.then((data) => {
+			console.log('update users team array', data);
+			res.json(data);
+		})
+		.catch((err) => console.log(err));
 });
 
 // Update Team Checked-In status
 router.put('/team/checkin', async ({ body }, res) => {
 	//Updates a member's checked-in status
-
-	console.log('Backend hit');
-	console.log('backend received req', body);
 
 	// Pushes user into Team member list
 	db.Team.findOne({ _id: body.teamId })
@@ -70,7 +96,6 @@ router.put('/team/checkin', async ({ body }, res) => {
 					teamDB.members[i].checkedIn = false;
 				}
 			});
-			// console.log('teamdb', teamDB);
 
 			teamDB.save().catch((err) => console.log(err));
 
@@ -96,7 +121,12 @@ router.delete('/team', async (req, res) => {
 		})
 		.catch((err) => res.status(400).json(err));
 });
-// ///////////////////////////////////////////
+
+// //////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////
+
+// SIGN UP ROUTES
+// ////////////////////////////////////////////////////////////////////////////
 
 router.post('/signup', (req, res) => {
 	//sign up the user
@@ -105,6 +135,7 @@ router.post('/signup', (req, res) => {
 		req.session.username = user.username;
 		req.session.user_id = user._id;
 		req.session.logged_in = true;
+		req.session.teams = [];
 		req.session.save((err) => {
 			console.log(err);
 		});
@@ -136,6 +167,7 @@ router.post('/login', (req, res) => {
 		})
 		.catch((err) => console.log(err));
 });
+// ////////////////////////////////////////////////////////////////////////////
 
 //put our env var on our server, and rename that key to the env later on
 router.get('/getkey', (req, res) => {

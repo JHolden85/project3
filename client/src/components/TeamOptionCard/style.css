@@ -14,6 +14,7 @@
 	padding-left: 10px;
 	margin-left: 27px;
 	margin-right: 27px;
+	margin-bottom: 20px;
 }
 .option {
 	height: 120%;
@@ -25,6 +26,8 @@
 	background-color: unset;
 }
 .deleteDiv {
+	display: flex;
+	flex-direction: column;
 	background-color: rgb(248, 109, 109);
 	color: white;
 	border: 3px red solid;
