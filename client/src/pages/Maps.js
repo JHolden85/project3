@@ -96,9 +96,9 @@ function Maps({ setPark }) {
                {/* style={style.card} */}
 							<MDBCard alignment="center" >
               {/* style={style.cardBody} */}
-								<MDBCardBody>
-									<MDBCardTitle>
-										<big>{park.name}</big>
+								<MDBCardBody className="bg-success">
+									<MDBCardTitle >
+										<big className="text-white">{park.name}</big>
 									</MDBCardTitle>
 									<MDBCardImage
 										src={imgSrc}
@@ -106,7 +106,7 @@ function Maps({ setPark }) {
 										alt="Park image here"
 									/>
 
-									<MDBCardText>
+									<MDBCardText className="text-white">
 										Park Address:
 										<br></br>
 										{park.vicinity}
