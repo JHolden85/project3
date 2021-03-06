@@ -26,30 +26,30 @@ import Container from '../components/Container';
 const googleApiKey = process.env.REACT_APP_googleApiKey;
 // import MapResults from "../components/mapResults";
 
-const style = {
-	card: {
-		display: 'block',
-		right: '10px',
-		margin: 'auto',
-		width: '90%',
-		color: 'white',
-	},
-	cardBody: {
-		border: '2px solid darkgreen',
-		borderRadius: '15px',
-		backgroundColor: 'green',
-		// marginTop: 'px',
-		maxwidth: '20em',
-	},
-	color: {
-		color: 'white',
-	},
-	header: {
-		marginTop: '10px',
-		marginBottom: '30px',
-		fontSize: '250%',
-	},
-};
+// const style = {
+// 	card: {
+// 		display: 'block',
+// 		right: '10px',
+// 		margin: 'auto',
+// 		width: '90%',
+// 		color: 'white',
+// 	},
+// 	cardBody: {
+// 		border: '2px solid darkgreen',
+// 		borderRadius: '15px',
+// 		backgroundColor: 'green',
+// 		// marginTop: 'px',
+// 		maxwidth: '20em',
+// 	},
+// 	color: {
+// 		color: 'white',
+// 	},
+// 	header: {
+// 		marginTop: '10px',
+// 		marginBottom: '30px',
+// 		fontSize: '250%',
+// 	},
+// };
 
 // Setting the developer state
 function Maps({ setPark }) {
@@ -81,7 +81,8 @@ function Maps({ setPark }) {
 
 	return (
 		<Container style={{ minHeight: '80%' }} id="mapsCardContainer">
-			<h1 className="text-center" style={style.header}>
+			<h1 className="text-center" >
+      {/* style={style.header} */}
 				Parks in your Area
 			</h1>
 			<MDBRow className="row-cols-1 row-cols-md-2 g-4">
@@ -91,11 +92,13 @@ function Maps({ setPark }) {
 						: 'https://imgix.ranker.com/user_node_img/94/1872415/original/randall-park-people-in-tv-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces'; //replace '' with placeholder img url
 
 					return (
-						<MDBCol key={park.place_id} style={style.card}>
-							<MDBCard alignment="center" style={style.cardBody}>
-								<MDBCardBody>
-									<MDBCardTitle>
-										<big>{park.name}</big>
+						<MDBCol key={park.place_id}>
+               {/* style={style.card} */}
+							<MDBCard alignment="center" >
+              {/* style={style.cardBody} */}
+								<MDBCardBody className="bg-success">
+									<MDBCardTitle >
+										<big className="text-white">{park.name}</big>
 									</MDBCardTitle>
 									<MDBCardImage
 										src={imgSrc}
@@ -103,7 +106,7 @@ function Maps({ setPark }) {
 										alt="Park image here"
 									/>
 
-									<MDBCardText>
+									<MDBCardText className="text-white">
 										Park Address:
 										<br></br>
 										{park.vicinity}
@@ -121,7 +124,8 @@ function Maps({ setPark }) {
 									</MDBBtn>
 								</MDBCardBody>
 								<MDBCardFooter>
-									<small className="text" style={style.color}>
+									<small className="text" >
+                  {/* style={style.color} */}
 										{park.business_status}
 									</small>
 								</MDBCardFooter>
