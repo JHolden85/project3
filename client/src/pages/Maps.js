@@ -59,10 +59,18 @@ function Maps({ setPark }) {
 	//Call to retreive the API data, and then load into the setParks function
 
 	useEffect(() => {
+		const options = {
+			enableHighAccuracy: true,
+			maximumAge: 100,
+			timeout: 50000,
+		};
+
 		// Requests User's Permission
-		navigator.geolocation.getCurrentPosition((position) => {
+		navigator.geolocation.watchPosition((position) => {
+			console.log(position);
 			const { latitude, longitude } = position.coords;
 
+			// Calls Google API based off of user location
 			API.getGoogleMap({
 				location: `${latitude},${longitude}`,
 				radius: 10000,
