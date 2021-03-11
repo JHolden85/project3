@@ -57,19 +57,33 @@ function Maps({ setPark }) {
 	const [parks, setParks] = useState([]);
 	const history = useHistory();
 	//Call to retreive the API data, and then load into the setParks function
+
 	useEffect(() => {
-		API.getGoogleMap({
-			location: '33.771713,-118.18131',
-			radius: 10000,
-			type: 'park',
-		})
-			.then(({ data }) => {
-				console.log('Success:', data);
-				setParks(data);
+		const options = {
+			enableHighAccuracy: true,
+			maximumAge: 100,
+			timeout: 50000,
+		};
+
+		// Requests User's Permission
+		navigator.geolocation.watchPosition((position) => {
+			console.log(position);
+			const { latitude, longitude } = position.coords;
+
+			// Calls Google API based off of user location
+			API.getGoogleMap({
+				location: `${latitude},${longitude}`,
+				radius: 10000,
+				type: 'park',
 			})
-			.catch((error) => {
-				console.error('Error:', error);
-			});
+				.then(({ data }) => {
+					console.log('Success:', data);
+					setParks(data);
+				})
+				.catch((error) => {
+					console.error('Error:', error);
+				});
+		});
 
 		//   });
 	}, []);
@@ -81,8 +95,8 @@ function Maps({ setPark }) {
 
 	return (
 		<Container style={{ minHeight: '80%' }} id="mapsCardContainer">
-			<h1 className="text-center" >
-      {/* style={style.header} */}
+			<h1 className="text-center">
+				{/* style={style.header} */}
 				Parks in your Area
 			</h1>
 			<MDBRow className="row-cols-1 row-cols-md-2 g-4">
@@ -93,11 +107,11 @@ function Maps({ setPark }) {
 
 					return (
 						<MDBCol key={park.place_id}>
-               {/* style={style.card} */}
-							<MDBCard alignment="center" >
-              {/* style={style.cardBody} */}
+							{/* style={style.card} */}
+							<MDBCard alignment="center">
+								{/* style={style.cardBody} */}
 								<MDBCardBody className="bg-success">
-									<MDBCardTitle >
+									<MDBCardTitle>
 										<big className="text-white">{park.name}</big>
 									</MDBCardTitle>
 									<MDBCardImage
@@ -124,8 +138,8 @@ function Maps({ setPark }) {
 									</MDBBtn>
 								</MDBCardBody>
 								<MDBCardFooter>
-									<small className="text" >
-                  {/* style={style.color} */}
+									<small className="text">
+										{/* style={style.color} */}
 										{park.business_status}
 									</small>
 								</MDBCardFooter>
