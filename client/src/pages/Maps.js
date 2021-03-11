@@ -62,7 +62,6 @@ function Maps({ setPark }) {
 		// Requests User's Permission
 		navigator.geolocation.getCurrentPosition((position) => {
 			const { latitude, longitude } = position.coords;
-			console.log('current lat and long', latitude, longitude);
 
 			API.getGoogleMap({
 				location: `${latitude},${longitude}`,
