@@ -1,4 +1,5 @@
 import Container from '../components/Container';
+import NoImg from '../Assets/No_Image_Available.jpg';
 
 const style = {
 	parentDiv: {
@@ -26,9 +27,9 @@ const style = {
 export default function ParkPage(props) {
 	const googleApiKey = process.env.REACT_APP_googleApiKey;
 
-	const imgSrc = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=350&photoreference=${props.photos[0].photo_reference}&key=${googleApiKey}`;
-
-	console.log(props);
+	const imgSrc = props.photos
+		? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${props.photos[0].photo_reference}&key=${googleApiKey}`
+		: NoImg;
 
 	return (
 		<Container style={{ minHeight: '80%' }}>
@@ -36,7 +37,11 @@ export default function ParkPage(props) {
 				<h1 className="text-center">{props.name}</h1>
 				<div className="row">
 					<h1>{props.data}</h1>
-					<img alt="biteme" style={style.image} src={imgSrc} />
+					<img
+						alt={'sorry, no photo available'}
+						style={style.image}
+						src={imgSrc}
+					/>
 				</div>
 				<div>
 					<br></br>
