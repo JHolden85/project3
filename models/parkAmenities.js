@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-const amenitiesSchema = new Schema({
+const Ameneties = new Schema({
     // parkName: string,
 	tennis: { type: Boolean, default: false },
 	football: { type: Boolean, default: false },
@@ -13,9 +13,9 @@ const amenitiesSchema = new Schema({
     skatepark: { type: Boolean, default: false },
     playground: { type: Boolean, default: false },
     pool: { type: Boolean, default: false },
-    place_id: { type: String }
+    // place_id: { type: String }
 });
 
-const Amenities = mongoose.model('Amenities', amenitiesSchema);
+const Amenities = mongoose.model('Amenities', Ameneties);
 
 module.exports = Amenities;
