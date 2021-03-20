@@ -2,6 +2,8 @@ const router = require('express').Router();
 const Amenity = require('../../models/ameneties');
 const db = require('../../models');
 
+// TO PUSH UP CURRENT CODE
+
 
 // Get park amenities
 router.get('/ameneties', (req, res) => {
