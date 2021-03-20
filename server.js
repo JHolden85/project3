@@ -1,8 +1,15 @@
+// bring in the express app
 const express = require('express');
 const session = require('express-session');
+// bring in the mongoose app
 const mongoose = require('mongoose');
+// define route path
 const routes = require('./routes');
+//define api
+// const api = require("./routes")
+// import express
 const app = express();
+// bring in the mongoDB initializer
 const MongoStore = require('connect-mongo')(session);
 const multer = require("multer");
 
@@ -42,6 +49,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // Add routes, both API and view
 app.use(routes);
+// app.use(require("/api",api));
 
 //connecting reference to upload folder for picture uploads
 app.use('/uploads', express.static('uploads'));

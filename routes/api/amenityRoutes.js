@@ -1,20 +1,22 @@
 const router = require('express').Router();
-const Amenity = require('../../models/parkAmenities');
+const Amenity = require('../../models/ameneties');
 const db = require('../../models');
-//const { default: MapResults } = require('../../client/src/components/mapResults');
 
-// amenityRoutes
-// ///////////////////////////////////////////
 
 // Get park amenities
-router.get('/parkamenity', (req, res) => {
+router.get('/ameneties', (req, res) => {
 	// Gets all Team data
-	db.Amenities.find({})
-		.then((amenitiesDB) => {
-			console.log(amenitiesDB);
-			res.json(amenitiesDB);
-		})
-		.catch((err) => res.status(400).json(err));
+
+	res.json({
+		confirmation: 'SUCCESS!',
+		data: "THIS IS THE AMENETIES ROUTE"
+	})
+	// db.Amenities.find({})
+	// 	.then((amenitiesDB) => {
+	// 		console.log(amenitiesDB);
+	// 		res.json(amenitiesDB);
+	// 	})
+	// 	.catch((err) => res.status(400).json(err));
 });
 
 // Create a Team
