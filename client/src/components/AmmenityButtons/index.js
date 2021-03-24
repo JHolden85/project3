@@ -1,7 +1,10 @@
+//ammBtn
 import React from 'react';
+import './style.css';
 
- button = () => {
-    
- }
+
+ const ammBtn = () => {
+
+  }
  );
      
