@@ -1,4 +1,5 @@
 import Container from '../components/Container';
+import AmmBtn from '../components/AmmenityButtons/index';
 
 
 const style = {
@@ -52,9 +53,10 @@ export default function ParkPage(props) {
 					</h4>
 				</div>
 				<div>
-					<h4>Community Rating: {props.rating}</h4>
+					<h4>Community Rating: {props.rating}</h4>					
 				</div>
 			</div>
+			
 		</Container>
 	);
 }
