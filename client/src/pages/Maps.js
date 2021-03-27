@@ -68,7 +68,6 @@ function Maps({ setPark }) {
 
 		// Requests User's Permission
 		navigator.geolocation.watchPosition((position) => {
-			console.log(position);
 			const { latitude, longitude } = position.coords;
 
 			// Calls Google API based off of user location
@@ -78,7 +77,7 @@ function Maps({ setPark }) {
 				type: 'park',
 			})
 				.then(({ data }) => {
-					console.log('Success:', data);
+					// console.log('Success:', data);
 					setParks(data);
 				})
 				.catch((error) => {

@@ -1,5 +1,7 @@
 import Container from '../components/Container';
 import NoImg from '../Assets/No_Image_Available.jpg';
+import Amenities from '../components/Amenities';
+import { useEffect, useState } from 'react';
 
 const style = {
 	parentDiv: {
@@ -35,20 +37,36 @@ const style = {
 };
 
 export default function ParkPage(props) {
+	const [park, setPark] = useState();
+	console.log('Park Data', park);
+
+	// useEffect(() => {
+	// 	if (!park) {
+	// 		setPark(props);
+	// 	}
+	// }, []);
+
+	localStorage.setItem('park', JSON.stringify(props));
+	const savedPark = localStorage.getItem('park');
+	const parsedPark = JSON.parse(savedPark);
+	console.log('parsed data', parsedPark);
+
 	const googleApiKey = process.env.REACT_APP_googleApiKey;
 
 	const imgSrc = props.photos
-		? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${props.photos[0].photo_reference}&key=${googleApiKey}`
+		? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${
+				props.photos[0].photo_reference || park.photos[0].photo_reference
+		  }&key=${googleApiKey}`
 		: NoImg;
 
 	return (
 		<Container style={{ minHeight: '80%' }}>
 			<div style={style.parentDiv}>
 				<h1 className="text-center" style={style.h1}>
-					{props.name}
+					{props.name || park.name}
 				</h1>
 				<div className="row">
-					<h1>{props.data}</h1>
+					{/* <h1>{props.data || parsedPark.data}</h1> */}
 					<img
 						alt={'sorry, no photo available'}
 						style={style.image}
@@ -59,64 +77,24 @@ export default function ParkPage(props) {
 					<br></br>
 					<h4>
 						<a
-							href={`https://maps.google.com/?ll=${props.geometry.location.lat},${props.geometry.location.lng}`}
+							href={
+								`https://maps.google.com/?ll=${props.geometry.location.lat},${props.geometry.location.lng}` ||
+								`https://maps.google.com/?ll=${park.geometry.location.lat},${park.geometry.location.lng}`
+							}
 							target="_blank"
 							rel="noreferrer"
 							style={style.a}
 						>
-							{props.vicinity}
+							{props.vicinity || park.vicinity}
 						</a>
 					</h4>
 				</div>
 				<div>
-					<h4>Community Rating: {props.rating}</h4>
+					<h4>Community Rating: {props.rating || park.rating}</h4>
 				</div>
 				<hr></hr>
 				<br></br>
-				<div style={style.Amenities} className="Amenities row">
-					<ul className="col" style={style.ul}>
-						<li>Baseball:</li>
-						<hr></hr>
-						<li>Soccer:</li>
-						<hr></hr>
-						<li>Football:</li>
-						<hr></hr>
-						<li>Basketball:</li>
-						<hr></hr>
-						<li>Running Track:</li>
-						<hr></hr>
-						<li>Handball:</li>
-						<hr></hr>
-						<li>Tennis:</li>
-						<hr></hr>
-						<li>Trail:</li>
-						<hr></hr>
-						<li>Pool:</li>
-						<hr></hr>
-						<li>Running Track:</li>
-					</ul>
-					<ul className="col" style={style.ul}>
-						<li>true</li>
-						<hr></hr>
-						<li>true</li>
-						<hr></hr>
-						<li>true</li>
-						<hr></hr>
-						<li>true</li>
-						<hr></hr>
-						<li>true</li>
-						<hr></hr>
-						<li>true</li>
-						<hr></hr>
-						<li>true</li>
-						<hr></hr>
-						<li>true</li>
-						<hr></hr>
-						<li>true</li>
-						<hr></hr>
-						<li>true</li>
-					</ul>
-				</div>
+				<Amenities />
 			</div>
 		</Container>
 	);
