@@ -25,6 +25,13 @@ const style = {
 	h1: {
 		fontSize: '150%',
 	},
+	Amenities: {
+		paddingLeft: '20px',
+		paddingRight: '20px',
+	},
+	ul: {
+		listStyleType: 'none',
+	},
 };
 
 export default function ParkPage(props) {
@@ -64,7 +71,52 @@ export default function ParkPage(props) {
 				<div>
 					<h4>Community Rating: {props.rating}</h4>
 				</div>
-				<div className="Amenities">Amenities go here!</div>
+				<hr></hr>
+				<br></br>
+				<div style={style.Amenities} className="Amenities row">
+					<ul className="col" style={style.ul}>
+						<li>Baseball:</li>
+						<hr></hr>
+						<li>Soccer:</li>
+						<hr></hr>
+						<li>Football:</li>
+						<hr></hr>
+						<li>Basketball:</li>
+						<hr></hr>
+						<li>Running Track:</li>
+						<hr></hr>
+						<li>Handball:</li>
+						<hr></hr>
+						<li>Tennis:</li>
+						<hr></hr>
+						<li>Trail:</li>
+						<hr></hr>
+						<li>Pool:</li>
+						<hr></hr>
+						<li>Running Track:</li>
+					</ul>
+					<ul className="col" style={style.ul}>
+						<li>true</li>
+						<hr></hr>
+						<li>true</li>
+						<hr></hr>
+						<li>true</li>
+						<hr></hr>
+						<li>true</li>
+						<hr></hr>
+						<li>true</li>
+						<hr></hr>
+						<li>true</li>
+						<hr></hr>
+						<li>true</li>
+						<hr></hr>
+						<li>true</li>
+						<hr></hr>
+						<li>true</li>
+						<hr></hr>
+						<li>true</li>
+					</ul>
+				</div>
 			</div>
 		</Container>
 	);
