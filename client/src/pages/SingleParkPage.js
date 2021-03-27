@@ -22,6 +22,9 @@ const style = {
 	a: {
 		color: 'white',
 	},
+	h1: {
+		fontSize: '150%',
+	},
 };
 
 export default function ParkPage(props) {
@@ -34,7 +37,9 @@ export default function ParkPage(props) {
 	return (
 		<Container style={{ minHeight: '80%' }}>
 			<div style={style.parentDiv}>
-				<h1 className="text-center">{props.name}</h1>
+				<h1 className="text-center" style={style.h1}>
+					{props.name}
+				</h1>
 				<div className="row">
 					<h1>{props.data}</h1>
 					<img
@@ -59,6 +64,7 @@ export default function ParkPage(props) {
 				<div>
 					<h4>Community Rating: {props.rating}</h4>
 				</div>
+				<div className="Amenities">Amenities go here!</div>
 			</div>
 		</Container>
 	);
