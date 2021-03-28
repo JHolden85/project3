@@ -13,6 +13,7 @@ import {
 	MDBCardFooter,
 } from 'mdb-react-ui-kit';
 import API from '../utils/API';
+import NoImg from '../Assets/No_Image_Available.jpg';
 
 // import the "SingleParkPage" to send the data from the maps.js
 
@@ -26,30 +27,30 @@ import Container from '../components/Container';
 const googleApiKey = process.env.REACT_APP_googleApiKey;
 // import MapResults from "../components/mapResults";
 
-// const style = {
-// 	card: {
-// 		display: 'block',
-// 		right: '10px',
-// 		margin: 'auto',
-// 		width: '90%',
-// 		color: 'white',
-// 	},
-// 	cardBody: {
-// 		border: '2px solid darkgreen',
-// 		borderRadius: '15px',
-// 		backgroundColor: 'green',
-// 		// marginTop: 'px',
-// 		maxwidth: '20em',
-// 	},
-// 	color: {
-// 		color: 'white',
-// 	},
-// 	header: {
-// 		marginTop: '10px',
-// 		marginBottom: '30px',
-// 		fontSize: '250%',
-// 	},
-// };
+const style = {
+	card: {
+		display: 'block',
+		right: '10px',
+		margin: 'auto',
+		width: '90%',
+		color: 'white',
+	},
+	cardBody: {
+		border: '2px solid darkgreen',
+		borderRadius: '15px',
+		backgroundColor: 'green',
+		// marginTop: 'px',
+		maxwidth: '20em',
+	},
+	color: {
+		color: 'white',
+	},
+	header: {
+		marginTop: '10px',
+		marginBottom: '30px',
+		fontSize: '250%',
+	},
+};
 
 // Setting the developer state
 function Maps({ setPark }) {
@@ -67,7 +68,6 @@ function Maps({ setPark }) {
 
 		// Requests User's Permission
 		navigator.geolocation.watchPosition((position) => {
-			console.log(position);
 			const { latitude, longitude } = position.coords;
 
 			// Calls Google API based off of user location
@@ -77,7 +77,7 @@ function Maps({ setPark }) {
 				type: 'park',
 			})
 				.then(({ data }) => {
-					console.log('Success:', data);
+					// console.log('Success:', data);
 					setParks(data);
 				})
 				.catch((error) => {
@@ -95,22 +95,18 @@ function Maps({ setPark }) {
 
 	return (
 		<Container style={{ minHeight: '80%' }} id="mapsCardContainer">
-			<h1 className="text-center">
-				{/* style={style.header} */}
+			<h1 className="text-center" style={style.header}>
 				Parks in your Area
 			</h1>
 			<MDBRow className="row-cols-1 row-cols-md-2 g-4">
 				{parks.map((park) => {
 					const imgSrc = park.photos
 						? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${park.photos[0].photo_reference}&key=${googleApiKey}`
-						: 'https://imgix.ranker.com/user_node_img/94/1872415/original/randall-park-people-in-tv-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces'; //replace '' with placeholder img url
-
+						: NoImg; //replace '' with placeholder img url
 					return (
-						<MDBCol key={park.place_id}>
-							{/* style={style.card} */}
-							<MDBCard alignment="center">
-								{/* style={style.cardBody} */}
-								<MDBCardBody className="bg-success">
+						<MDBCol key={park.place_id} style={style.card}>
+							<MDBCard alignment="center" style={style.cardBody}>
+								<MDBCardBody className="bg-success" style={style.cardBody}>
 									<MDBCardTitle>
 										<big className="text-white">{park.name}</big>
 									</MDBCardTitle>
@@ -127,8 +123,8 @@ function Maps({ setPark }) {
 									</MDBCardText>
 
 									{/* <MDBCardTitle>
-                    The Park is: 
-                  </MDBCardTitle> */}
+									The Park is: 
+									</MDBCardTitle> */}
 
 									<MDBBtn
 										onClick={() => handleSinglePark(park)}
@@ -138,8 +134,7 @@ function Maps({ setPark }) {
 									</MDBBtn>
 								</MDBCardBody>
 								<MDBCardFooter>
-									<small className="text">
-										{/* style={style.color} */}
+									<small className="text" style={style.color}>
 										{park.business_status}
 									</small>
 								</MDBCardFooter>
