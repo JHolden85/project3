@@ -90,6 +90,7 @@ function Maps({ setPark }) {
 
 	const handleSinglePark = (data) => {
 		setPark(data);
+		localStorage.setItem('park', JSON.stringify(data));
 		history.push('/park');
 	};
 
