@@ -36,9 +36,9 @@ const style = {
 	},
 };
 
-export default function ParkPage(props) {
+export default function ParkPage() {
 	const [park, setPark] = useState();
-	console.log('Park Data', park);
+	// console.log('Park Data', park);
 
 	// useEffect(() => {
 	// 	if (!park) {
@@ -46,24 +46,21 @@ export default function ParkPage(props) {
 	// 	}
 	// }, []);
 
-	localStorage.setItem('park', JSON.stringify(props));
 	const savedPark = localStorage.getItem('park');
 	const parsedPark = JSON.parse(savedPark);
 	console.log('parsed data', parsedPark);
 
 	const googleApiKey = process.env.REACT_APP_googleApiKey;
 
-	const imgSrc = props.photos
-		? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${
-				props.photos[0].photo_reference || park.photos[0].photo_reference
-		  }&key=${googleApiKey}`
+	const imgSrc = parsedPark.photos
+		? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${parsedPark.photos[0].photo_reference}&key=${googleApiKey}`
 		: NoImg;
 
 	return (
 		<Container style={{ minHeight: '80%' }}>
 			<div style={style.parentDiv}>
 				<h1 className="text-center" style={style.h1}>
-					{props.name || park.name}
+					{parsedPark.name}
 				</h1>
 				<div className="row">
 					{/* <h1>{props.data || parsedPark.data}</h1> */}
@@ -77,20 +74,17 @@ export default function ParkPage(props) {
 					<br></br>
 					<h4>
 						<a
-							href={
-								`https://maps.google.com/?ll=${props.geometry.location.lat},${props.geometry.location.lng}` ||
-								`https://maps.google.com/?ll=${park.geometry.location.lat},${park.geometry.location.lng}`
-							}
+							href={`https://maps.google.com/?ll=${parsedPark.geometry.location.lat},${parsedPark.geometry.location.lng}`}
 							target="_blank"
 							rel="noreferrer"
 							style={style.a}
 						>
-							{props.vicinity || park.vicinity}
+							{parsedPark.vicinity}
 						</a>
 					</h4>
 				</div>
 				<div>
-					<h4>Community Rating: {props.rating || park.rating}</h4>
+					<h4>Community Rating: {parsedPark.rating}</h4>
 				</div>
 				<hr></hr>
 				<br></br>
