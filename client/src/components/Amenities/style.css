@@ -1,6 +1,10 @@
 .Amenities {
-	padding-left: 20px;
-	padding-right: 20px;
+	/* padding-left: 20px;
+	padding-right: 20px; */
+	background-color: #00b74a;
+	padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+	border: 2px solid darkgreen;
 }
 ul {
 	list-style-type: none;
