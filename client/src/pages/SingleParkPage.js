@@ -47,7 +47,8 @@ export default function ParkPage() {
 	// 	API.setPark(park);
 	// });
 
-	const googleApiKey = process.env.REACT_APP_googleApiKey;
+	const googleApiKey =
+		process.env.REACT_APP_googleApiKey || process.env.googleApiKey;
 
 	const imgSrc = parsedPark.photos
 		? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${parsedPark.photos[0].photo_reference}&key=${googleApiKey}`

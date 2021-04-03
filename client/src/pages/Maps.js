@@ -25,7 +25,9 @@ import { useHistory } from 'react-router-dom';
 import Container from '../components/Container';
 // import router from '../../../routes/api/userRoutes';
 
-const googleApiKey = process.env.REACT_APP_googleApiKey;
+const googleApiKey =
+	process.env.REACT_APP_googleApiKey || process.env.googleApiKey;
+
 // import MapResults from "../components/mapResults";
 
 const style = {
@@ -89,7 +91,7 @@ function Maps({ setPark }) {
 				type: 'park',
 			})
 				.then(({ data }) => {
-					// console.log('Success:', data);
+					console.log('Success:', data);
 					setParks(data);
 				})
 				.catch((error) => {
