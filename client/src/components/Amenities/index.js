@@ -1,7 +1,9 @@
 import React from 'react';
 import './style.css';
 
-const Amenities = () => {
+const Amenities = ({ park }) => {
+	console.log('park data received on amenities page', park);
+
 	return (
 		<div className="Amenities row">
 			<ul className="col">

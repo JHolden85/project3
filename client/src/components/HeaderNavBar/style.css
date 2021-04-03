@@ -1,9 +1,8 @@
 .Header {
 	background-color: darkgreen;
-	padding: 1vh;
 	align-content: center;
 	width: 100%;
-	font-size: 260%;
+	font-size: 360%;
 }
 
 .link {
@@ -18,6 +17,7 @@
 	padding-right: 4vh;
 	align-self: center;
 }
+
 .hello {
 	color: white;
 }

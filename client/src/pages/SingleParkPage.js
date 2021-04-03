@@ -2,6 +2,7 @@ import Container from '../components/Container';
 import NoImg from '../Assets/No_Image_Available.jpg';
 import Amenities from '../components/Amenities';
 import { useEffect, useState } from 'react';
+import API from '../utils/API';
 
 const style = {
 	parentDiv: {
@@ -37,18 +38,14 @@ const style = {
 };
 
 export default function ParkPage() {
-	const [park, setPark] = useState();
-	// console.log('Park Data', park);
-
-	// useEffect(() => {
-	// 	if (!park) {
-	// 		setPark(props);
-	// 	}
-	// }, []);
-
 	const savedPark = localStorage.getItem('park');
 	const parsedPark = JSON.parse(savedPark);
-	console.log('parsed data', parsedPark);
+
+	const [park, setPark] = useState(parsedPark);
+
+	// useEffect(() => {
+	// 	API.setPark(park);
+	// });
 
 	const googleApiKey = process.env.REACT_APP_googleApiKey;
 
@@ -63,7 +60,6 @@ export default function ParkPage() {
 					{parsedPark.name}
 				</h1>
 				<div className="row">
-					{/* <h1>{props.data || parsedPark.data}</h1> */}
 					<img
 						alt={'sorry, no photo available'}
 						style={style.image}
@@ -88,7 +84,7 @@ export default function ParkPage() {
 				</div>
 				<hr></hr>
 				<br></br>
-				<Amenities />
+				<Amenities park={park} />
 			</div>
 		</Container>
 	);

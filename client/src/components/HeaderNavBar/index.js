@@ -10,7 +10,9 @@ const HeaderNavBar = ({ username }) => {
 		<div className="flex Header">
 			<a className="link" id="navlink" href="/">
 				<img src={tree} alt=""></img>
-				<span id="navtexts">Parc-It</span>
+				<span className="woodlistFont" id="navtexts">
+					Parc-It
+				</span>
 			</a>
 
 			<h3 className="hello">Hello {username}</h3>
