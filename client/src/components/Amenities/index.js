@@ -1,4 +1,7 @@
 import React from 'react';
+import edit from '../../Assets/Icons/icons8-edit-24.png';
+import yes from '../../Assets/Icons/true.png';
+import no from '../../Assets/Icons/false.png';
 import './style.css';
 
 const Amenities = ({ park }) => {
@@ -27,25 +30,94 @@ const Amenities = ({ park }) => {
 					<li>Running Track:</li>
 				</ul>
 				<ul className="col">
-					<li>true</li>
+					<li>
+						<img className="yesOrNo" src={yes}></img>
+						{'           '}
+						<button className="editBtn">
+							<img src={edit} alt="edit"></img>
+						</button>
+					</li>
 					<hr></hr>
-					<li>true</li>
+					<li>
+						{' '}
+						<img className="yesOrNo" src={yes}></img>
+						{'           '}
+						<button className="editBtn">
+							<img src={edit} alt="edit"></img>
+						</button>
+					</li>
 					<hr></hr>
-					<li>true</li>
+					<li>
+						{' '}
+						<img className="yesOrNo" src={no}></img>
+						{'           '}
+						<button className="editBtn">
+							<img src={edit} alt="edit"></img>
+						</button>
+					</li>
 					<hr></hr>
-					<li>true</li>
+					<li>
+						{' '}
+						<img className="yesOrNo" src={yes}></img>
+						{'           '}
+						<button className="editBtn">
+							<img src={edit} alt="edit"></img>
+						</button>
+					</li>
 					<hr></hr>
-					<li>true</li>
+					<li>
+						{' '}
+						<img className="yesOrNo" src={yes}></img>
+						{'           '}
+						<button className="editBtn">
+							<img src={edit} alt="edit"></img>
+						</button>
+					</li>
 					<hr></hr>
-					<li>true</li>
+					<li>
+						{' '}
+						<img className="yesOrNo" src={no}></img>
+						{'           '}
+						<button className="editBtn">
+							<img src={edit} alt="edit"></img>
+						</button>
+					</li>
 					<hr></hr>
-					<li>true</li>
+					<li>
+						{' '}
+						<img className="yesOrNo" src={yes}></img>
+						{'           '}
+						<button className="editBtn">
+							<img src={edit} alt="edit"></img>
+						</button>
+					</li>
 					<hr></hr>
-					<li>true</li>
+					<li>
+						{' '}
+						<img className="yesOrNo" src={yes}></img>
+						{'           '}
+						<button className="editBtn">
+							<img src={edit} alt="edit"></img>
+						</button>
+					</li>
 					<hr></hr>
-					<li>true</li>
+					<li>
+						{' '}
+						<img className="yesOrNo" src={no}></img>
+						{'           '}
+						<button className="editBtn">
+							<img src={edit} alt="edit"></img>
+						</button>
+					</li>
 					<hr></hr>
-					<li>true</li>
+					<li>
+						{' '}
+						<img className="yesOrNo" src={yes}></img>
+						{'           '}
+						<button className="editBtn">
+							<img src={edit} alt="edit"></img>
+						</button>
+					</li>
 				</ul>
 			</div>
 		</div>
