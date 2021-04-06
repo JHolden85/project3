@@ -25,8 +25,7 @@ import { useHistory } from 'react-router-dom';
 import Container from '../components/Container';
 // import router from '../../../routes/api/userRoutes';
 
-const googleApiKey =
-	process.env.REACT_APP_googleApiKey || process.env.googleApiKey;
+const googleApiKey = process.env.REACT_APP_googleApiKey;
 
 // import MapResults from "../components/mapResults";
 
