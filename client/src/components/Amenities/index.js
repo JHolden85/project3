@@ -5,8 +5,12 @@ import no from '../../Assets/Icons/false.png';
 import './style.css';
 
 const Amenities = ({ park }) => {
+	const handleClick = () => {
+		console.log('clicked');
+	};
+
 	return (
-		<div className="Amenities">
+		<div className="Amenities travelFont">
 			<div className=" row">
 				<ul className="col">
 					<li>Baseball:</li>
@@ -31,90 +35,71 @@ const Amenities = ({ park }) => {
 				</ul>
 				<ul className="col">
 					<li>
-						<img className="yesOrNo" src={yes}></img>
-						{'           '}
-						<button className="editBtn">
+						yes{' '}
+						<button className="editBtn" onClick={handleClick}>
 							<img src={edit} alt="edit"></img>
 						</button>
 					</li>
 					<hr></hr>
 					<li>
-						{' '}
-						<img className="yesOrNo" src={yes}></img>
-						{'           '}
-						<button className="editBtn">
+						yes{' '}
+						<button className="editBtn" onClick={handleClick}>
 							<img src={edit} alt="edit"></img>
 						</button>
 					</li>
 					<hr></hr>
 					<li>
-						{' '}
-						<img className="yesOrNo" src={no}></img>
-						{'           '}
-						<button className="editBtn">
+						no{' '}
+						<button className="editBtn" onClick={handleClick}>
 							<img src={edit} alt="edit"></img>
 						</button>
 					</li>
 					<hr></hr>
 					<li>
-						{' '}
-						<img className="yesOrNo" src={yes}></img>
-						{'           '}
-						<button className="editBtn">
+						yes{' '}
+						<button className="editBtn" onClick={handleClick}>
 							<img src={edit} alt="edit"></img>
 						</button>
 					</li>
 					<hr></hr>
 					<li>
-						{' '}
-						<img className="yesOrNo" src={yes}></img>
-						{'           '}
-						<button className="editBtn">
+						yes{' '}
+						<button className="editBtn" onClick={handleClick}>
 							<img src={edit} alt="edit"></img>
 						</button>
 					</li>
 					<hr></hr>
 					<li>
-						{' '}
-						<img className="yesOrNo" src={no}></img>
-						{'           '}
-						<button className="editBtn">
+						no{' '}
+						<button className="editBtn" onClick={handleClick}>
 							<img src={edit} alt="edit"></img>
 						</button>
 					</li>
 					<hr></hr>
 					<li>
-						{' '}
-						<img className="yesOrNo" src={yes}></img>
-						{'           '}
-						<button className="editBtn">
+						yes{' '}
+						<button className="editBtn" onClick={handleClick}>
 							<img src={edit} alt="edit"></img>
 						</button>
 					</li>
 					<hr></hr>
 					<li>
-						{' '}
-						<img className="yesOrNo" src={yes}></img>
-						{'           '}
-						<button className="editBtn">
+						yes{' '}
+						<button className="editBtn" onClick={handleClick}>
 							<img src={edit} alt="edit"></img>
 						</button>
 					</li>
 					<hr></hr>
 					<li>
-						{' '}
-						<img className="yesOrNo" src={no}></img>
-						{'           '}
-						<button className="editBtn">
+						yes{' '}
+						<button className="editBtn" onClick={handleClick}>
 							<img src={edit} alt="edit"></img>
 						</button>
 					</li>
 					<hr></hr>
 					<li>
-						{' '}
-						<img className="yesOrNo" src={yes}></img>
-						{'           '}
-						<button className="editBtn">
+						yes{' '}
+						<button className="editBtn" onClick={handleClick}>
 							<img src={edit} alt="edit"></img>
 						</button>
 					</li>

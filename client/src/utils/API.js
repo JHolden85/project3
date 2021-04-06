@@ -16,6 +16,12 @@ const memberCheckIn = (teamData) =>
 	axios.put('api/user/team/checkin', teamData);
 // ///////////////////////////////////////////////////////////////////////////////
 
+// PARKS - CP
+// ///////////////////////////////////////////////////////////////////////////////
+const postPark = (parkData) => axios.post('api/users/park', parkData);
+const findPark = (parkData) => axios.get('api/users/park', parkData);
+// ///////////////////////////////////////////////////////////////////////////////
+
 // AMENITIES - CP
 // ///////////////////////////////////////////////////////////////////////////////
 // const getPark = (park) => axios.get('api/user/currentPark', park);
@@ -40,6 +46,8 @@ const API = {
 	deleteTeam,
 	memberCheckIn,
 	getUser,
+	postPark,
+	findPark,
 	// getPark,
 	// setPark,
 	logout,

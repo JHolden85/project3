@@ -1,6 +1,4 @@
 .Amenities {
-	/* padding-left: 20px;
-	padding-right: 20px; */
 	background-color: #00b74a;
 	padding: 10px 10px 10px 10px;
 	border-radius: 10px;
@@ -11,14 +9,12 @@ ul {
 }
 .editBtn {
 	background: none;
-	color: inherit;
 	border: none;
 	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+	margin: 0;
+	outline: none;
+	padding-left: 70px;
 }
-.yesOrNo {
-	max-width: 18px;
-	padding: none;
+.info {
+	padding: 0;
 }

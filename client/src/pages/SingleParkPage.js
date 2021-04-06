@@ -43,9 +43,21 @@ export default function ParkPage() {
 
 	const [park, setPark] = useState(parsedPark);
 
-	// useEffect(() => {
-	// 	API.setPark(park);
-	// });
+	useEffect(() => {
+		console.log('google id', park.place_id);
+		async function find() {
+			const results = await API.findPark({ id: park.place_id });
+
+			if (!results) {
+				console.log('no results found in database. now posting new entry');
+				API.postPark({ id: park.place_id, name: park.name });
+			} else {
+				console.log('park found: ', results);
+			}
+		}
+
+		find();
+	});
 
 	const googleApiKey =
 		process.env.REACT_APP_googleApiKey || process.env.googleApiKey;
