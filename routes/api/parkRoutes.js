@@ -6,8 +6,9 @@ const db = require('../../models');
 
 // Get park amenities
 router.get('/currentPark', (req, res) => {
+	console.log('backend route hit', res);
 	// Gets all Team data
-	db.Amenities.find({})
+	db.Amenities.find({ park_id: res.park_id })
 		.then((amenitiesDB) => {
 			console.log(amenitiesDB);
 			res.json(amenitiesDB);
@@ -16,7 +17,8 @@ router.get('/currentPark', (req, res) => {
 });
 
 // Create a Park - CP
-router.post('/park', (req, res) => {
+router.post('/amenities', (req, res) => {
+	console.log('backend route hit');
 	//Posts a new team
 	db.Amenities.create({
 		parkName: req.name,
@@ -30,9 +32,9 @@ router.post('/park', (req, res) => {
 });
 
 // Find a Park in DB - CP
-router.get('/park', (req, res) => {
+router.get('/amenities', (req, res) => {
 	console.log('get park route', res);
-	db.Amenities.findOne({ id: res.place_id });
+	db.Amenities.findOne({ place_id: res.place_id });
 });
 
 module.exports = router;

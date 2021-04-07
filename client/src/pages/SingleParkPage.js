@@ -43,20 +43,27 @@ export default function ParkPage() {
 
 	const [park, setPark] = useState(parsedPark);
 
+	// async function find() {
+	// 	const results = await API.findPark(park);
+	// 	console.log('results of search', results);
+
+	// 	// if (!results) {
+	// 	// 	console.log('no results found in database. now posting new entry');
+	// 	// 	API.postPark({ id: park.place_id, name: park.name });
+	// 	// } else {
+	// 	// 	console.log('park found: ', results);
+	// 	// }
+	// }
+
 	useEffect(() => {
-		console.log('google id', park.place_id);
-		async function find() {
-			const results = await API.findPark({ id: park.place_id });
+		console.log('current park', park);
+		console.log('current park id', park.place_id);
 
-			if (!results) {
-				console.log('no results found in database. now posting new entry');
-				API.postPark({ id: park.place_id, name: park.name });
-			} else {
-				console.log('park found: ', results);
-			}
-		}
+		API.findPark(park).then(() => {
+			console.log('data sent to backend', park);
+		});
 
-		find();
+		// find();
 	});
 
 	const googleApiKey =
@@ -74,7 +81,7 @@ export default function ParkPage() {
 				</h1>
 				<div className="row">
 					<img
-						alt={'sorry, no photo available'}
+						alt={'sorry, no data available'}
 						style={style.image}
 						src={imgSrc}
 					/>
