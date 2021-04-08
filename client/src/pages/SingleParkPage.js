@@ -2,6 +2,7 @@ import Container from '../components/Container';
 import NoImg from '../Assets/No_Image_Available.jpg';
 import Amenities from '../components/Amenities';
 import { useEffect, useState } from 'react';
+import API from '../utils/API';
 
 const style = {
 	parentDiv: {
@@ -37,20 +38,36 @@ const style = {
 };
 
 export default function ParkPage() {
-	const [park, setPark] = useState();
-	// console.log('Park Data', park);
-
-	// useEffect(() => {
-	// 	if (!park) {
-	// 		setPark(props);
-	// 	}
-	// }, []);
-
 	const savedPark = localStorage.getItem('park');
 	const parsedPark = JSON.parse(savedPark);
-	console.log('parsed data', parsedPark);
 
-	const googleApiKey = process.env.REACT_APP_googleApiKey;
+	const [park, setPark] = useState(parsedPark);
+
+	// async function find() {
+	// 	const results = await API.findPark(park);
+	// 	console.log('results of search', results);
+
+	// 	// if (!results) {
+	// 	// 	console.log('no results found in database. now posting new entry');
+	// 	// 	API.postPark({ id: park.place_id, name: park.name });
+	// 	// } else {
+	// 	// 	console.log('park found: ', results);
+	// 	// }
+	// }
+
+	useEffect(() => {
+		console.log('current park', park);
+		console.log('current park id', park.place_id);
+
+		API.findPark(park).then(() => {
+			console.log('data sent to backend', park);
+		});
+
+		// find();
+	});
+
+	const googleApiKey =
+		process.env.REACT_APP_googleApiKey || process.env.googleApiKey;
 
 	const imgSrc = parsedPark.photos
 		? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${parsedPark.photos[0].photo_reference}&key=${googleApiKey}`
@@ -63,9 +80,8 @@ export default function ParkPage() {
 					{parsedPark.name}
 				</h1>
 				<div className="row">
-					{/* <h1>{props.data || parsedPark.data}</h1> */}
 					<img
-						alt={'sorry, no photo available'}
+						alt={'sorry, no data available'}
 						style={style.image}
 						src={imgSrc}
 					/>
@@ -88,7 +104,7 @@ export default function ParkPage() {
 				</div>
 				<hr></hr>
 				<br></br>
-				<Amenities />
+				<Amenities park={park} />
 			</div>
 		</Container>
 	);

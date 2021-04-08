@@ -16,6 +16,7 @@ import HeaderNavBar from './components/HeaderNavBar';
 import FooterNavBar from './components/FooterNavBar';
 import PhotoUpload from './pages/Photo';
 import SinglePark from './pages/SingleParkPage';
+import background from './Assets/Backgrounds/1.jpg';
 import './App.css';
 
 function App() {
