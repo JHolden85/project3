@@ -43,27 +43,15 @@ export default function ParkPage() {
 
 	const [park, setPark] = useState(parsedPark);
 
-	// async function find() {
-	// 	const results = await API.findPark(park);
-	// 	console.log('results of search', results);
-
-	// 	// if (!results) {
-	// 	// 	console.log('no results found in database. now posting new entry');
-	// 	// 	API.postPark({ id: park.place_id, name: park.name });
-	// 	// } else {
-	// 	// 	console.log('park found: ', results);
-	// 	// }
-	// }
-
 	useEffect(() => {
 		console.log('current park', park);
 		console.log('current park id', park.place_id);
 
-		API.findPark(park).then(() => {
-			console.log('data sent to backend', park);
-		});
-
-		// find();
+		API.findPark(park)
+			.then((data) => {
+				console.log('data sent to backend', data);
+			})
+			.catch((err) => console.log(err));
 	});
 
 	const googleApiKey =
@@ -109,24 +97,3 @@ export default function ParkPage() {
 		</Container>
 	);
 }
-
-// ======================
-
-//     const UploadPic = function(img) {
-//         ////const {place_id} = useParams()
-//         console.log(img.target.value)
-//         var StorePic = img.target.value
-//     }
-
-//     return (
-//     <Container style={{ minHeight: "80%" }}>
-//         <h1 className="text-center">{props.name}</h1>
-//         <div className="row">
-//     <h1>{props.data}</h1>
-//     <img alt="biteme" src={props.imgSrc}/>
-// <input type="file" placeholder="Upload Photo" onChange = {UploadPic} ></input>
-//     </div>
-//     </Container>
-//     );
-// }
-// ==================

@@ -10,7 +10,7 @@ router.get('/currentPark', (req, res) => {
 	// Gets all Team data
 	db.Amenities.find({ park_id: res.park_id })
 		.then((amenitiesDB) => {
-			console.log(amenitiesDB);
+			// console.log(amenitiesDB);
 			res.json(amenitiesDB);
 		})
 		.catch((err) => res.status(400).json(err));
@@ -25,7 +25,7 @@ router.post('/amenities', (req, res) => {
 		id: req.place_id,
 	})
 		.then((amenitiesDB) => {
-			console.log(amenitiesDB);
+			// console.log(amenitiesDB);
 			res.json(amenitiesDB);
 		})
 		.catch((err) => res.status(400).json(err));
@@ -33,8 +33,10 @@ router.post('/amenities', (req, res) => {
 
 // Find a Park in DB - CP
 router.get('/amenities', (req, res) => {
-	console.log('get park route', res);
-	db.Amenities.findOne({ place_id: res.place_id });
+	console.log('get park route', res.query);
+	db.Amenities.findOne({ place_id: res.query.place_id }, () => {
+		console.log(res.query);
+	});
 });
 
 module.exports = router;

@@ -90,7 +90,7 @@ function Maps({ setPark }) {
 				type: 'park',
 			})
 				.then(({ data }) => {
-					console.log('Success:', data);
+					// console.log('Success:', data);
 					setParks(data);
 				})
 				.catch((error) => {
