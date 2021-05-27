@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const amenitiesSchema = new Schema({
-	parkName: { type: String },
-	place_id: { type: String },
+	parkName: { type: String, require: true },
+	place_id: { type: String, require: true },
 	tennis: { type: Boolean, default: false },
 	football: { type: Boolean, default: false },
 	soccer: { type: Boolean, default: false },

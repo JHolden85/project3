@@ -23,12 +23,10 @@ import loading from '../Assets/loading.gif';
 import { useHistory } from 'react-router-dom';
 
 import Container from '../components/Container';
-// import router from '../../../routes/api/userRoutes';
 
 const googleApiKey = process.env.REACT_APP_googleApiKey;
 
-// import MapResults from "../components/mapResults";
-
+// Styling for Google API result on homepage
 const style = {
 	card: {
 		display: 'block',
@@ -90,7 +88,6 @@ function Maps({ setPark }) {
 				type: 'park',
 			})
 				.then(({ data }) => {
-					console.log('Success:', data);
 					setParks(data);
 				})
 				.catch((error) => {

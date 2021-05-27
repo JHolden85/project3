@@ -43,27 +43,23 @@ export default function ParkPage() {
 
 	const [park, setPark] = useState(parsedPark);
 
-	// async function find() {
-	// 	const results = await API.findPark(park);
-	// 	console.log('results of search', results);
+	console.log(park);
 
-	// 	// if (!results) {
-	// 	// 	console.log('no results found in database. now posting new entry');
-	// 	// 	API.postPark({ id: park.place_id, name: park.name });
-	// 	// } else {
-	// 	// 	console.log('park found: ', results);
-	// 	// }
-	// }
+	const { place_id, name } = park;
 
 	useEffect(() => {
-		console.log('current park', park);
-		console.log('current park id', park.place_id);
+		API.findPark({ place_id: place_id }).then((data) => {
+			console.log('data sent to backend', data);
 
-		API.findPark(park).then(() => {
-			console.log('data sent to backend', park);
+			if (data.data === null) {
+				console.log('no park data found');
+				API.postPark({ place_id: place_id, name: name })
+					.then((data) => console.log('posted data', data))
+					.catch((err) => console.log(err));
+			} else {
+				console.log(data.data);
+			}
 		});
-
-		// find();
 	});
 
 	const googleApiKey =

@@ -18,8 +18,8 @@ const memberCheckIn = (teamData) =>
 
 // PARKS - CP
 // ///////////////////////////////////////////////////////////////////////////////
-const postPark = (parkData) => axios.post('api/park/amenities', parkData);
-const findPark = (parkData) => axios.get('api/park/amenities', parkData);
+const postPark = (parkData) => axios.post('api/park/new', parkData);
+const findPark = (parkData) => axios.post('api/park/amenities', parkData);
 // ///////////////////////////////////////////////////////////////////////////////
 
 // AMENITIES - CP

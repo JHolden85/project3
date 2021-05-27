@@ -9,8 +9,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mapsdb');
 axios.get(endpoint).then(({ data }) => {
 	// console.log(data.results[0]);
 	City.create(data.results[0])
-		.then((res) => {
-			console.log(res);
+		.then((response) => {
+			res.json(response);
 		})
 		.catch((err) => console.log(err));
 });
