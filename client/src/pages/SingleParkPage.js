@@ -42,36 +42,39 @@ export default function ParkPage() {
 	const parsedPark = JSON.parse(savedPark);
 
 	const [park, setPark] = useState(parsedPark);
+	const [amenities, setAmenities] = useState();
 
-	// async function find() {
-	// 	const results = await API.findPark(park);
-	// 	console.log('results of search', results);
-
-	// 	// if (!results) {
-	// 	// 	console.log('no results found in database. now posting new entry');
-	// 	// 	API.postPark({ id: park.place_id, name: park.name });
-	// 	// } else {
-	// 	// 	console.log('park found: ', results);
-	// 	// }
-	// }
-
-	useEffect(() => {
-		console.log('current park', park);
-		console.log('current park id', park.place_id);
-
-		API.findPark(park).then(() => {
-			console.log('data sent to backend', park);
-		});
-
-		// find();
-	});
+	// Deconstructing place_id and park name to query MongoDB
+	const { place_id, name } = park;
 
 	const googleApiKey =
 		process.env.REACT_APP_googleApiKey || process.env.googleApiKey;
 
+	// Selects the first photo as a display, or our placeholder photo if no photo is available by default from Google API
 	const imgSrc = parsedPark.photos
 		? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${parsedPark.photos[0].photo_reference}&key=${googleApiKey}`
 		: NoImg;
+
+	useEffect(() => {
+		// Searching for the current park in our database
+		API.findPark({ place_id: place_id }).then(({ data }) => {
+			console.log('data sent to backend', data);
+
+			// If our park is not found, we create a new park in our DB
+			if (data === null) {
+				console.log('no park data found');
+				API.postPark({ place_id: place_id, parkName: name })
+					.then((data) => {
+						console.log('posted data', data);
+						setAmenities(data);
+					})
+					.catch((err) => console.log(err));
+			} else {
+				console.log(data);
+				setAmenities(data);
+			}
+		});
+	});
 
 	return (
 		<Container style={{ minHeight: '80%' }}>
@@ -104,29 +107,8 @@ export default function ParkPage() {
 				</div>
 				<hr></hr>
 				<br></br>
-				<Amenities park={park} />
+				<Amenities park={amenities} />
 			</div>
 		</Container>
 	);
 }
-
-// ======================
-
-//     const UploadPic = function(img) {
-//         ////const {place_id} = useParams()
-//         console.log(img.target.value)
-//         var StorePic = img.target.value
-//     }
-
-//     return (
-//     <Container style={{ minHeight: "80%" }}>
-//         <h1 className="text-center">{props.name}</h1>
-//         <div className="row">
-//     <h1>{props.data}</h1>
-//     <img alt="biteme" src={props.imgSrc}/>
-// <input type="file" placeholder="Upload Photo" onChange = {UploadPic} ></input>
-//     </div>
-//     </Container>
-//     );
-// }
-// ==================

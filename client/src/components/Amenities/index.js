@@ -9,6 +9,8 @@ const Amenities = ({ park }) => {
 		console.log('clicked');
 	};
 
+	// console.log('amenities component', park);
+
 	return (
 		<div className="Amenities travelFont">
 			<div className=" row">

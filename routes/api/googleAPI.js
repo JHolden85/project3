@@ -2,7 +2,6 @@ const router = require('express').Router();
 const axios = require('axios');
 
 router.post('/search', (req, res) => {
-	console.log(req.body);
 	const { location, radius, type } = req.body;
 	const mapsURL =
 		'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' +
@@ -20,11 +19,10 @@ router.post('/search', (req, res) => {
 		'&key=' +
 		process.env.googleApiKey;
 
-	console.log('API.js ' + mapsURL);
 	axios
 		.get(mapsURL)
 		.then(({ data }) => {
-			console.log(data);
+			// console.log(data);
 			res.json(data.results);
 		})
 		.catch((err) => console.log(err));
